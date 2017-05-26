@@ -61,9 +61,15 @@ class UserTest < ActiveSupport::TestCase
       assert_equal 1, User.inactive.size
       assert_equal ["Troy"], User.inactive.map{|e| e.last_name}.sort
     end
+
     should "show that there are 4 active users" do
       assert_equal 4, User.active.size
       assert_equal ["Chen", "Heimann", "Seed", "Wu"], User.active.map{|e| e.last_name}.sort
+    end
+
+    should "show that there are 4 deacons" do
+      assert_equal 4, User.deacons.size
+      assert_equal ["Chen", "Heimann", "Troy", "Wu"], User.deacons.map{|e| e.last_name}.sort
     end
 
     should "show that there is 1 care deacon" do

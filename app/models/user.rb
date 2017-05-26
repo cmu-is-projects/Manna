@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   #scopes
   scope :active,          -> { where(active: true) }
   scope :inactive,        -> { where(active: false) }
+  scope :deacons,         -> { where.not(role: 'care_connector') }
   scope :care_deacons,        -> { where("role != ? AND is_care_deacon = ?", 'care_connector', true) }
   scope :financial_deacons,   -> { where("role != ? AND is_care_deacon = ?", 'care_connector', false) }
   scope :care_connectors,      -> { where(role: 'care_connector') }

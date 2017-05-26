@@ -12,6 +12,8 @@ class Ability
     elsif user.role? :deacon
       if user.is_care_deacon?
         #care deacon
+        can :read, User #not sure about this one
+
         can :read, Case do |c|
             c.deacon_id == user.id
         end
@@ -24,10 +26,12 @@ class Ability
         can :update, Case do |c|
           c.deacon_id == user.id
         end
-
         can :create, Case
-      else
+
+    elsif user.role? :deacon
+      if !user.is_care_deacon?se
         #financial deacon
+        can :read, User #not sure about this one
         can :create, Vote
         can :read, Case
         can :create, Case
@@ -38,6 +42,12 @@ class Ability
           c.deacon_id == user.id
         end
       end
+
+    else
+      #care connector
+      can :read, Vote
+      can :read, Case
+      can :read, User
     end
   end
 
