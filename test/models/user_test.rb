@@ -61,9 +61,9 @@ class UserTest < ActiveSupport::TestCase
       assert_equal 1, User.inactive.size
       assert_equal ["Troy"], User.inactive.map{|e| e.last_name}.sort
     end
-    should "show that there are three active users" do
-      assert_equal 3, User.active.size
-      assert_equal ["Chen", "Heimann", "Wu"], User.active.map{|e| e.last_name}.sort
+    should "show that there are 4 active users" do
+      assert_equal 4, User.active.size
+      assert_equal ["Chen", "Heimann", "Seed", "Wu"], User.active.map{|e| e.last_name}.sort
     end
 
     should "show that there is 1 care deacon" do
@@ -76,9 +76,14 @@ class UserTest < ActiveSupport::TestCase
       assert_equal ["Chen", "Heimann", "Troy"], User.financial_deacons.map{|e| e.last_name}.sort
     end
 
+    should "show that there is 1 care connector" do
+      assert_equal 1, User.care_connectors.size
+      assert_equal ["Seed"], User.care_connectors.map{|e| e.last_name}.sort
+    end
+
     should "show that the alphabetical scope works" do
-      assert_equal 4, User.alphabetical.size
-      assert_equal ["Chen", "Heimann", "Troy", "Wu"], User.alphabetical.map{|e| e.last_name}.sort
+      assert_equal 5, User.alphabetical.size
+      assert_equal ["Chen", "Heimann", "Seed", "Troy", "Wu"], User.alphabetical.map{|e| e.last_name}.sort
     end
 
     should "show that the name method works" do
