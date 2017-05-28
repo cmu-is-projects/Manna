@@ -92,4 +92,3 @@ Here is a list of things that need to be done:
 
 *The possibilities are endless...*
 
-Ally
