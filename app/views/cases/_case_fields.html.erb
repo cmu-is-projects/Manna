@@ -1,6 +1,6 @@
 <%= f.input :subject, placeholder: 'Paying for Medical Bill' %>
 <%= f.input :client_name, placeholder: 'John Doe' %>
-<%= f.input :deacon_id, :collection => User.active, :include_blank => true %>
+<%= f.input :deacon_id, :collection => User.deacons.active, :include_blank => true %>
 <%= f.input :summary, placeholder: 'Write description here...', as: :text, :input_html => { :rows => 10, :style => 'resize: none;'} %>
 <!--  hidden field for status... -->
 <%= f.input :status, as: :hidden, input_html: {value: 'submitted'} %>

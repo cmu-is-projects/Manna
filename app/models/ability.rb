@@ -27,6 +27,7 @@ class Ability
           c.deacon_id == user.id
         end
         can :create, Case
+      end
 
     elsif user.role? :deacon
       if !user.is_care_deacon?se

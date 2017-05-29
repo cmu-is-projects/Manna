@@ -1,7 +1,7 @@
 <div class = "row" id = "nav">
   <div class = "row" id = "login">
     <% if logged_in? %>
-      <%= current_user.proper_name %> | <%= current_user.role %><br>
+      <%= link_to current_user.proper_name, current_user %> | <%= current_user.role %><br>
       <%= link_to 'Logout', logout_path %>
     <% else %>
       <%= link_to 'Login', login_path %>
