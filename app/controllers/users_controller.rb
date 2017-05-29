@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :login_required, except: [:new, :create]
+  # before_filter :login_required, except: [:new, :create]
 
   def index
     @users = Users.alphabetical.all
+  end
 
   # GET /users/1
   # GET /users/1.json

@@ -30,7 +30,7 @@ class Ability
       end
 
     elsif user.role? :deacon
-      if !user.is_care_deacon?se
+      if !user.is_care_deacon?
         #financial deacon
         can :read, User #not sure about this one
         can :create, Vote
