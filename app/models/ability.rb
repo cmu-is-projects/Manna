@@ -44,7 +44,7 @@ class Ability
         end
       end
 
-    else
+    elsif user.role? :care_connector
       #care connector
       can :read, Vote
       can :read, Case
