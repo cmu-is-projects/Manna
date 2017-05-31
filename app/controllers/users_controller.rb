@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_filter :login_required, except: [:new, :create]
 
 
-
   # GET /users/1
   # GET /users/1.json
   def show

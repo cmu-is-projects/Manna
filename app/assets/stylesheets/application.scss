@@ -1,4 +1,16 @@
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+$primary-color: color("indigo", "darken-4") !default;
+$secondary-color: color("orange", "ligthen-2") !default;
 @import 'materialize';
+
+
+body {
+	overflow: scroll;
+}
+footer {
+	position: fixed;
+	bottom: -1px;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+}

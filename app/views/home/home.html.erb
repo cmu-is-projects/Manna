@@ -2,6 +2,7 @@
 <div class = "row">
   <!-- if care deacon -->
   <% if current_user.is_care_deacon? %>
+  <div class = "card">
   <h1>Your Cases</h1>
   <table class = "u-full-width">
     <thead>
@@ -21,63 +22,73 @@
       <% end %>
     </tbody>
   </table>
+  </div>
 
   <% else %>
-  <% if @need_review.empty?%>
-  <h1>Need Review</h1>
-  <p>None!</p>
-  <% else %>
-    <h1>Need Review</h1>
+  <!-- NEED REVIEW AREA -->
+  <div class="col s6">
+    <div class="card">
+      <% if @need_review.empty?%>
+      <h3>Need Review</h3>
+      <p>None!</p>
+      <% else %>
+        <h1>Need Review</h1>
 
-    <table class = "u-full-width">
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>Client Name</th>
-          <th>Date submitted</th>
-          <th>Voted</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for c in @need_review %>
-          <tr>
-            <td><%= link_to "#{c.subject}", c %></td>
-            <td><%= c.client_name %></td>
-            <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
-            <td><%= c.has_voted?(current_user)%></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <% end %>
-    <% if @reviewed.empty?%>
-    <h1>Reviewed Cases</h1>
-    <p>None!</p>
-    <% else %>
-      <h1>Reviewed Cases</h1>
-
-      <table class = "u-full-width">
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Client Name</th>
-            <th>Date submitted</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for c in @reviewed %>
+        <table class = "striped centered">
+          <thead>
             <tr>
-              <td><%= link_to "#{c.subject}", c %></td>
-              <td><%= c.client_name %></td>
-              <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+              <th>Subject</th>
+              <th>Client Name</th>
+              <th>Date submitted</th>
+              <th>Voted</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% end %>
-  <% end %>
+          </thead>
+          <tbody>
+            <% for c in @need_review %>
+              <tr>
+                <td><%= link_to "#{c.subject}", c %></td>
+                <td><%= c.client_name %></td>
+                <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+                <td><%= c.has_voted?(current_user)%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
+    </div>
 
+    <!-- REVIEWED AREA -->
+    <div class="col s6">
+      <div class="card">
+        <% if @reviewed.empty?%>
+        <h3>Reviewed Cases</h3>
+        <p>None!</p>
+        <% else %>
+          <h1>Reviewed Cases</h1>
+
+          <table class = "striped centered">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Client Name</th>
+                <th>Date submitted</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for c in @reviewed %>
+                <tr>
+                  <td><%= link_to "#{c.subject}", c %></td>
+                  <td><%= c.client_name %></td>
+                  <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
 
 
 </div>

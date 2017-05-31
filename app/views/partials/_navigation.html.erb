@@ -1,34 +1,19 @@
-<div class = "row" id = "nav">
-  <div class = "row" id = "login">
-    <% if logged_in? %>
-      <%= current_user.proper_name %> | <%= current_user.role %><br>
-      <%= link_to 'Logout', logout_path %>
-    <% else %>
-      <%= link_to 'Login', login_path %>
-    <% end %>
-  </div>
-  <div class = "row">
-    <div id = "title">
-      <%= link_to(home_path) do %>
-      <h1>MANNA</h1>
-      <% end %>
-    </div>
-  </div>
-  <div class = "row">
-    <%= link_to(home_path) do %>
-    <div class = "one-half column navHalf" >
-      <p id ="blurb">ACAC Pittsburgh PA</p>
-    </div>
-    <% end %>
-    <div class = "one-half column omega navHalf" >
-      <ul class = "nav_menu">
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to 'MANNA', home_path, class: "brand-logo left" %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to(home_path) do %> ACAC Pittsburgh PA<% end %></li>
         <li><%= link_to 'Home', home_path %></li>
         <li><%= link_to 'Submit', new_case_path %></li>
         <li><%= link_to 'Cases', cases_path %></li>
-        <li class = "last"><%= link_to 'Clients', clients_path %></li>
-        <!-- need to find way to display clients -->
+        <li>
+            <% if logged_in? %>
+              <!-- <%= current_user.proper_name %> | <%= current_user.role %><br> -->
+              <%= link_to 'Logout', logout_path %>
+            <% else %>
+              <%= link_to 'Login', login_path %>
+            <% end %>
+        </li>
       </ul>
-    </div>
-
   </div>
-</div>
+</nav>

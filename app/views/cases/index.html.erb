@@ -3,7 +3,7 @@
 
 <h1>Listing Cases</h1>
 
-<table class = "u-full-width">
+<table class = "striped responsive-table centered">
   <thead>
     <tr>
       <th>Subject</th>
@@ -23,8 +23,9 @@
 </table>
 
 <br>
-
-<%= link_to '+NEW CASE', new_case_path %>
+<br>
+<br>
+<%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
 <% else %>
   <p>please log in</p>
 
