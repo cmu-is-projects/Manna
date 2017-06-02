@@ -1,7 +1,7 @@
 <% if logged_in? %>
 <div class = "row">
   <!-- if care deacon -->
-  <% if current_user.is_care_deacon? %>
+  <% if current_user.role?('care deacon') %>
   <h1>Your Cases</h1>
   <table class = "u-full-width">
     <thead>
