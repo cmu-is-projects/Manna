@@ -1,5 +1,5 @@
 <%= simple_nested_form_for @case, :html => { :class => '' } do |case_form| %>
-    <div class="card small">  
+    <div class="card">  
       <div class="row">
         <div class="col s8 offset-s2">
           <fieldset>
@@ -7,9 +7,7 @@
           </fieldset>
         </div>
       </div>
-    </div>
 
-    <div class= "card">
       <div class = "row">
         <div class = "col s8 offset-s2">
          
@@ -24,13 +22,11 @@
           </p>
         </div>
       </div>
-   </div>
 
-  </div>
     <div class = "row">
       <div class="form-actions">
-        <%= case_form.submit "Send", :class => 'btn orange lighten-2' %>
-        <%= link_to 'Cancel', cases_path, :class => 'btn orange lighten-2' %>
+        <div class = "col s3 offset-s2"><%= case_form.submit "Send", :class => 'btn orange lighten-2' %></div>
+        <div class ="col s1"><%= link_to 'Cancel', cases_path, :class => 'btn orange lighten-2' %></div>
       </div>
     </div>
   </div>

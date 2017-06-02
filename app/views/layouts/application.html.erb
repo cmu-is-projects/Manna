@@ -15,15 +15,6 @@
 </head>
 <body>
  <%= render 'partials/navigation' %>
-     <!-- search bar -->
-     
-    <%= form_tag(cases_path, :method => "get", id: "search-form") do %>
-      <div class = "row">
-        <div class = "col s8"><%= text_field_tag :search, params[:search], placeholder: "Search Cases" %></div>
-        <div class = "col s2 offset-s2 waves-effect waves-light btn black-text white"><%= submit_tag "Search", :name => nil,   :id => 'search_button' %></div>
-      </div>
-
-    <% end %>
   
   <div class = "container">
 

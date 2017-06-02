@@ -1,6 +1,8 @@
 <div class = "row">
-  <h1>List of Clients</h1>
-  <% Case.all.map do |c| %>
-      <%= c.client_name %><br>
-  <% end %>
+	<div class="col s6 offset-s2">
+	  <h3>List of Clients</h3>
+	  <% Case.all.map do |c| %>
+	      <%= c.client_name %><br>
+	  <% end %>
+	 </div>
 </div>

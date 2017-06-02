@@ -3,13 +3,10 @@ $primary-color: color("indigo", "darken-4") !default;
 $secondary-color: color("orange", "ligthen-2") !default;
 @import 'materialize';
 
-
-body {
-	overflow: scroll;
-}
 footer {
 	position: fixed;
-	bottom: -1px;
+	height: 8%;
+	bottom: 0px;
 	width: 100%;
 	color: #fff;
 	text-align: center;

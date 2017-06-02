@@ -4,7 +4,7 @@
   <% if current_user.is_care_deacon? %>
   <div class = "card">
   <h1>Your Cases</h1>
-  <table class = "u-full-width">
+  <table class = "striped centered">
     <thead>
       <tr>
         <th>Subject</th>
@@ -26,8 +26,8 @@
 
   <% else %>
   <!-- NEED REVIEW AREA -->
-  <div class="col s6">
-    <div class="card">
+  <div class = "card">
+  <div class="col s12">
       <% if @need_review.empty?%>
       <h3>Need Review</h3>
       <p>None!</p>
@@ -59,8 +59,8 @@
     </div>
 
     <!-- REVIEWED AREA -->
-    <div class="col s6">
-      <div class="card">
+    <div class="card">
+      <div class="col s12" >
         <% if @reviewed.empty?%>
         <h3>Reviewed Cases</h3>
         <p>None!</p>
@@ -96,7 +96,7 @@
 <% else %>
 <!-- login form from sessions -->
 <div class = "row">
- <div class = "twelve columns" >
+ <div class = "col s12" >
   <h3>Log In</h3>
     <%= form_tag sessions_path do %>
       <div class="control-group">
