@@ -1,4 +1,4 @@
-
+<div class="card">
 <%= simple_form_for @vote, remote: true do |f|   %>
 
 <% if @vote.errors.any? %>
@@ -8,7 +8,7 @@
 <% end %>
 
 <br>
-  <h1 id = "vote_popup">Vote</h1>
+  <h3 id = "vote_popup">Vote</h3>
   <br>
   <%= f.text_field  :decision, :id => 'decision', :style => 'display:none;'%>
   <div class = "vote_section">
@@ -21,3 +21,4 @@
 <br>
   <%= f.button :submit, :id => 'voteSubmit', :value => 'Done', :style => 'display:none;' %>
 <% end %>
+</div>

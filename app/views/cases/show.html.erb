@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 <% if can? :read, @case %>
   <div class = "row">
-    <div class = "eight columns">
+    <div class = "col s12">
       <h2> <%= @case.subject %></h2>
     </div>
-    <div class = "four columns">
+  </div>
+  <div class="row">
+    <div class = "col s12">
       <div class = "row">
-        <div class = "twelve columns click_me">
+        <div class = "col s12 click_me">
             <%= link_to new_vote_taken_path(@case.id), remote: true do%>
               <h2>Votes:
                 <span class="num_yes"><%= @case.votes.yes.count %></span> |

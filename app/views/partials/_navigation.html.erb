@@ -1,12 +1,12 @@
 <nav class="nav-extended">
-<div class = "nav indigo darken-3" id ="welcome-nav">
+<div class = "nav" id ="welcome-nav">
   Welcome, <%= @current_user %>!
 </div>
   <div class="nav-wrapper" id="nav-2">
     <%= link_to 'MANNA', home_path, class: "brand-logo" %>
      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to(home_path) do %> ACAC Pittsburgh PA<% end %></li>
+        
         <li><%= link_to 'Home', home_path %></li>
         <li><%= link_to 'Submit', new_case_path %></li>
         <li><%= link_to 'Cases', cases_path %></li>
@@ -21,7 +21,6 @@
       </ul>
 
       <ul class="side-nav">
-        <li><%= link_to(home_path) do %> ACAC Pittsburgh PA<% end %></li>
         <li><%= link_to 'Home', home_path %></li>
         <li><%= link_to 'Submit', new_case_path %></li>
         <li><%= link_to 'Cases', cases_path %></li>

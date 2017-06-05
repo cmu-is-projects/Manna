@@ -1,34 +1,72 @@
 @import "materialize/components/color";
-$primary-color: color("indigo", "darken-4") !default;
-$secondary-color: color("orange", "ligthen-2") !default;
+$primary-color: color("deep-orange", "lighten-1") !default;
+$secondary-color: color("brown", "darken-2") !default;
 @import 'materialize';
 
+html {
 
-body {
-	background-color: #eee;
+	font-family: Martel;
 
-	h1,h2,h3 {
-		text-align: center;
-	}
+	body {
+		position: fixed;
+		background-color: #eee;
 
-	nav {
-
-	}
-
-	footer {
-		// position: absolute;
-		// bottom: 0px;
-		// width: 100%;
-		color: #fff;
-		text-align: center;
-	}
-
-	.card {
-		padding: 3%;
-		margin: 5%;
-		h3 {
+		h1,h2,h3 {
 			text-align: center;
 		}
-	}
 
+			.container {
+			position: fixed;
+			top: 30%;
+			width: 100%;
+			left: 10%;
+		}
+
+		nav {
+
+			#welcome-nav {
+				position: relative;
+				top: 0px;
+				height: 9%;
+				width: 100%;
+
+			}
+
+			#nav-2 {
+				position: relative;
+				top: 10%;
+				height: 10%;
+				width: 100%;
+			}
+
+			#search {
+				position: relative;
+				top: 20%;
+				width: 100%;
+
+			}	
+		}
+
+
+
+		.card {
+			padding: 3%;
+			margin: 5%;
+
+			h3 {
+				text-align: center;
+			}
+
+
+		}
+
+		footer {
+			position: fixed;
+			bottom: 10px;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+		}
+
+	}
 }
