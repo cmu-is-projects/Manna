@@ -12,20 +12,20 @@ class Case < ActiveRecord::Base
 
 
   #scopes
-  scope :chronological,    -> { order('date_submitted DESC') }
+  scope :chronological,       -> { order('date_submitted DESC') }
 
-  scope :submitted,        -> { where(status: "submitted")}
-  scope :approved,        -> { where(status: "approved")}
-  scope :rejected,        -> { where(status: "rejected")}
-  scope :check_processed,        -> { where(status: "check processed")}
+  scope :submitted,           -> { where(status: "submitted")}
+  scope :approved,            -> { where(status: "approved")}
+  scope :rejected,            -> { where(status: "rejected")}
+  scope :check_processed,     -> { where(status: "check processed")}
   scope :check_signed,        -> { where(status: "check signed")}
 
-  scope :for_deacon,       -> (user_id) {where(deacon_id: user_id) }
-  scope :for_client,      -> (client_name) {where("client_name LIKE ?", client_name + "%")}
-  scope :by_client_name,         -> { order("client_name ASC") }
+  scope :for_deacon,          -> (user_id) {where(deacon_id: user_id) }
+  scope :for_client,          -> (client_name) {where("client_name LIKE ?", client_name + "%")}
+  scope :by_client_name,      -> { order("client_name ASC") }
 
-  # scope case voted by deacon
-  # scope case not voted by deacon
+  scope :voted_by_deacon,     -> (user_id) {joins(:votes).where(deacon_id: user_id)}
+  scope :not_voted_by_deacon,  -> (user_id) {joins(:votes).where.not(deacon_id: user_id)}
 
   #methods
   def set_date

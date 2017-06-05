@@ -9,13 +9,14 @@ class Ability
       # they get to do it all
       can :manage, :all
 
-    elsif user.role?('care_deacon')
+    elsif user.role? :care_deacon
       #care deacon
       can :read, User
 
-      can :read, Case do |c|
-          c.deacon_id == user.id
-      end
+      # can :read, Case do |c|
+      #     c.deacon_id == user.id
+      # end
+      can :read, Case
       can :edit, Case do |c|
         c.deacon_id == user.id
       end
@@ -27,7 +28,7 @@ class Ability
       end
       can :create, Case
 
-    elsif user.role?('financial deacon')
+    elsif user.role? :financial_deacon
       #financial deacon
       can :read, User
       can :create, Vote
@@ -44,10 +45,11 @@ class Ability
       #care connector
       can :read, Vote
       can :read, Case
+
       can :update, Case #to edit status
       can :read, User
     
-    elsif user.role?('head deacon')
+    elsif user.role? :head_deacon
       can :read, User
       can :create, Vote
       can :read, Case

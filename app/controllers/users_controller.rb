@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = Users.alphabetical.all
+    @users = User.alphabetical.all
   end
 
   # GET /users/1

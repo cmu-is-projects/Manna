@@ -22,60 +22,7 @@
     </tbody>
   </table>
 
-  <% else %>
-  <% if @need_review.empty?%>
-  <h1>Need Review</h1>
-  <p>None!</p>
-  <% else %>
-    <h1>Need Review</h1>
 
-    <table class = "u-full-width">
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>Client Name</th>
-          <th>Date submitted</th>
-          <th>Voted?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for c in @need_review %>
-          <tr>
-            <td><%= link_to "#{c.subject}", c %></td>
-            <td><%= c.client_name %></td>
-            <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
-            <td><%= c.has_voted?(current_user) ? "Yes" : "No" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <% end %>
-    <% if @reviewed.empty?%>
-    <h1>Reviewed Cases</h1>
-    <p>None!</p>
-    <% else %>
-      <h1>Reviewed Cases</h1>
-
-      <table class = "u-full-width">
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Client Name</th>
-            <th>Date submitted</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for c in @reviewed %>
-            <tr>
-              <td><%= link_to "#{c.subject}", c %></td>
-              <td><%= c.client_name %></td>
-              <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% end %>
   <% end %>
 
 
