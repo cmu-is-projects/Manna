@@ -1,5 +1,5 @@
 <div class= "row">
-  <h1>Approved Cases</h1>
+  <h1>Cases Needing Vote</h1>
 
   <table class = "u-full-width">
     <thead>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for c in @approved_cases %>
+      <% for c in @cases_need_voting %>
         <tr>
           <td><%= link_to "#{c.subject}", c %></td>
           <td><%= c.client_name %></td>
@@ -22,7 +22,7 @@
 </div>
 
 <div class= "row">
-  <h1>All Cases</h1>
+  <h1>Submitted Cases</h1>
 
   <table class = "u-full-width">
     <thead>
@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for c in @all_cases %>
+      <% for c in @submitted_cases %>
         <tr>
           <td><%= link_to "#{c.subject}", c %></td>
           <td><%= c.client_name %></td>
