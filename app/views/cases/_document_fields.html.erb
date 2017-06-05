@@ -1,6 +1,6 @@
 <div class="row fields">
   <!-- fields -->
-  <div class = "five columns">
+  <div class = "col s5">
     <%= f.label :attachment %>
     <!-- <a href="#" class = "button primary" onclick="document.getElementById('fileID').click(); return false;" />Browse</a> -->
     <%= f.file_field :attachment, :"capture" => 'camera', :"id" => 'fileID', :"class" => 'attach_file'%>
@@ -8,13 +8,12 @@
 
   </div>
 
-  <div class = "five columns">
+  </div>
+
+<div class="row">
+  <div class = "col s10">
     <%= f.label :name %>
     <%= f.text_field :name, :"id" => 'fileName'%>
   </div>
-  <div class = "two columns">
-    <!-- x icon to remove -->
-      <label>&nbsp;</label>
-      <%= f.link_to_remove("remove", :class => 'btn orange lighten-2')%>
-  </div>
+
   </div>

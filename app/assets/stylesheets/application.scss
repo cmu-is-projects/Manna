@@ -3,11 +3,32 @@ $primary-color: color("indigo", "darken-4") !default;
 $secondary-color: color("orange", "ligthen-2") !default;
 @import 'materialize';
 
-footer {
-	position: fixed;
-	height: 8%;
-	bottom: 0px;
-	width: 100%;
-	color: #fff;
-	text-align: center;
+
+body {
+	background-color: #eee;
+
+	h1,h2,h3 {
+		text-align: center;
+	}
+
+	nav {
+
+	}
+
+	footer {
+		// position: absolute;
+		// bottom: 0px;
+		// width: 100%;
+		color: #fff;
+		text-align: center;
+	}
+
+	.card {
+		padding: 3%;
+		margin: 5%;
+		h3 {
+			text-align: center;
+		}
+	}
+
 }
