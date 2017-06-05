@@ -1,54 +1,15 @@
 <% if logged_in? %>
 <div class = "row">
-  <!-- if care deacon -->
-  <% if current_user.role?('care deacon') %>
-  <h1>Your Cases</h1>
-  <table class = "u-full-width">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Client Name</th>
-        <th>Date submitted</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for c in @cases_user %>
-        <tr>
-          <td><%= link_to "#{c.subject}", c %></td>
-          <td><%= c.client_name %></td>
-          <td><%= c.date_submitted %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-
+  
+  <% if current_user.role? :care_deacon %>
+    <%= render "care_deacon" %>
+  <% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
+    <%= render "head_deacon" %>
+  <% elsif current_user.role? :finantial_deacon %>
+    <%= render "finantial_deacon" %>
+  <% elsif current_user.role? :staff %>
+    <%= render "staff" %>
   <% end %>
 
-
-
-</div>
-
-<% else %>
-<!-- login form from sessions -->
-<div class = "row">
- <div class = "twelve columns" >
-  <h3>Log In</h3>
-    <%= form_tag sessions_path do %>
-      <div class="control-group">
-        <%= label_tag :email %>
-        <div class="controls">
-          <%= text_field_tag :email, params[:email] %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= label_tag :password %>
-        <div class="controls">
-          <%= password_field_tag :password %>
-        </div>
-      </div>
-      <div class="actions"><%= submit_tag("Log In", :class=>"button") %></div>
-    <% end %>
- </div>
 </div>
 <% end %>

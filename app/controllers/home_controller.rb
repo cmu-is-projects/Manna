@@ -2,16 +2,16 @@ class HomeController < ApplicationController
 
   def home
     if logged_in?
-      if current_user.role?('care_deacon')
+      if current_user.role? :care_deacon
         @cases_user = Case.for_deacon(current_user.id).chronological.paginate(page: params[:page]).per_page(10)
-      elsif current_user.role?('admin') || current_user.role?('head_deacon')
+      elsif (current_user.role? :admin) || (current_user.role? :head_deacon)
         @cases_need_voting = Case.not_voted_by_deacon(current_user).chronological.paginate(page: params[:page]).per_page(10)
         @check_processed_cases = Case.check_processed.chronological.paginate(page: params[:page]).per_page(10)
         @submitted_cases = Case.submitted.chronological.paginate(page: params[:page]).per_page(10)
-      elsif current_user.role?('staff')
+      elsif current_user.role? :staff
         @all_cases = Case.chronological.paginate(page: params[:page]).per_page(10)
         @approved_cases = Case.approved.chronological.paginate(page: params[:page]).per_page(10)
-      elsif current_user.role?('financial_deacon')
+      elsif current_user.role? :financial_deacon
         @submitted_cases = Case.submitted.chronological.paginate(page: params[:page]).per_page(10)
         @cases_need_voting = Case.not_voted_by_deacon(current_user).chronological.paginate(page: params[:page]).per_page(10)
       end
