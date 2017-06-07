@@ -25,8 +25,13 @@ class Case < ActiveRecord::Base
   scope :for_client,          -> (client_name) {where("client_name LIKE ?", client_name + "%")}
   scope :by_client_name,      -> { order("client_name ASC") }
 
-  scope :voted_by_deacon,     -> (user_id) {joins(:votes).where(deacon_id: user_id)}
-  scope :not_voted_by_deacon,  -> (user_id) {joins(:votes).where.not(deacon_id: user_id)} #this is incorrect, return when nil
+  scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
+  # scope :not_voted_by_deacon,  -> (user_id) 
+
+  def self.not_voted_by_deacon(user)
+    cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)
+    cases.sort_by!{|c| c.date_submitted}.reverse unless cases.empty?
+  end
 
   #methods
   def set_date
