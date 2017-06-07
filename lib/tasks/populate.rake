@@ -17,7 +17,7 @@ namespace :db do
 	    admin = User.new
 	    admin.first_name = 'Jason' 
 	    admin.last_name = 'Chen'
-	    admin.email = admin@gmail.com
+	    admin.email = 'admin@gmail.com'
 	   	admin.password = 'manna'
 	   	admin.password_confirmation = 'manna'
 	   	admin.phone = '4124788458'
@@ -28,7 +28,7 @@ namespace :db do
 		staff = User.new
 	    staff.first_name = 'Ikane' 
 	    staff.last_name = 'Manage'
-	    staff.email = staff@gmail.com
+	    staff.email = 'staff@gmail.com'
 	   	staff.password = 'manna'
 	   	staff.password_confirmation = 'manna'
 	   	staff.phone = '4124788458'
@@ -39,7 +39,7 @@ namespace :db do
 	   	head = User.new
 	    head.first_name = 'Heidi' 
 	    head.last_name = 'Deekon'
-	    head.email = head_deacon@gmail.com
+	    head.email = 'head_deacon@gmail.com'
 	   	head.password = 'manna'
 	   	head.password_confirmation = 'manna'
 	   	head.phone = '4124788458'
@@ -50,18 +50,18 @@ namespace :db do
 	   	care = User.new
 	    care.first_name = 'Claire' 
 	    care.last_name = 'Deekon'
-	    care.email = care_deacon@gmail.com
+	    care.email = 'care_deacon@gmail.com'
 	   	care.password = 'manna'
 	   	care.password_confirmation = 'manna'
 	   	care.phone = '4124788458'
-	   	care.role = 'head_deacon'
+	   	care.role = 'care_deacon'
 	   	care.active = true   	
 	   	care.save!
 
 	   	finance = User.new
 	    finance.first_name = 'Finn' 
 	    finance.last_name = 'Nance'
-	    finance.email = financial_deacon@gmail.com
+	    finance.email = 'financial_deacon@gmail.com'
 	   	finance.password = 'manna'
 	   	finance.password_confirmation = 'manna'
 	   	finance.phone = '4124788458'
@@ -72,7 +72,7 @@ namespace :db do
 	    care2 = User.new
 	    care2.first_name = 'Ally' 
 	    care2.last_name = 'Sorge'
-	    care2.email = ally@gmail.com
+	    care2.email = 'ally@gmail.com'
 	   	care2.password = 'manna'
 	   	care2.password_confirmation = 'manna'
 	   	care2.phone = '4124788458'
@@ -83,7 +83,7 @@ namespace :db do
 	   	care3 = User.new
 	    care3.first_name = 'Sina' 
 	    care3.last_name = 'Siddiqi'
-	    care3.email = sina@gmail.com
+	    care3.email = 'sina@gmail.com'
 	   	care3.password = 'manna'
 	   	care3.password_confirmation = 'manna'
 	   	care3.phone = '4124788458'

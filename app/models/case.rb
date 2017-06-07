@@ -7,7 +7,7 @@ class Case < ActiveRecord::Base
   has_many :documents, through: :case_documents
 
   validates_presence_of :client_name, :summary, :subject
-  validates_inclusion_of :status, in: %w[submitted approved rejected check\ signed check\ processed], message: "is not an option"
+  validates_inclusion_of :status, in: %w[submitted approved rejected check_signed check_processed], message: "is not an option"
   accepts_nested_attributes_for :documents, reject_if: lambda { |document| document[:name].blank? }, allow_destroy: true
 
 
@@ -17,8 +17,8 @@ class Case < ActiveRecord::Base
   scope :submitted,           -> { where(status: "submitted")}
   scope :approved,            -> { where(status: "approved")}
   scope :rejected,            -> { where(status: "rejected")}
-  scope :check_processed,     -> { where(status: "check processed")}
-  scope :check_signed,        -> { where(status: "check signed")}
+  scope :check_processed,     -> { where(status: "check_processed")}
+  scope :check_signed,        -> { where(status: "check_signed")}
 
   scope :for_deacon,          -> (user_id) {where(deacon_id: user_id) }
   scope :for_client,          -> (client_name) {where("client_name LIKE ?", client_name + "%")}
