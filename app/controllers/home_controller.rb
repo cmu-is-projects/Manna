@@ -25,5 +25,6 @@ class HomeController < ApplicationController
   end
 
   def clients
+    @all_cases = Case.client_alphabetical.chronological.paginate(page: params[:page]).per_page(10)
   end
 end

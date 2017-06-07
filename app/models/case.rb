@@ -13,6 +13,7 @@ class Case < ActiveRecord::Base
 
   #scopes
   scope :chronological,       -> { order('date_submitted DESC') }
+  scope :client_alphabetical, -> { order(:client_name)}
 
   scope :submitted,           -> { where(status: "submitted")}
   scope :approved,            -> { where(status: "approved")}
