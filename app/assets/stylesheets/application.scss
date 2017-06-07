@@ -2,58 +2,76 @@
 $primary-color: color("deep-orange", "lighten-1") !default;
 $secondary-color: color("brown", "darken-2") !default;
 @import 'materialize';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 html {
 
-	font-family: Martel;
+	font-family: GillSans;
 
 	body {
 		position: fixed;
 		background-color: #eee;
+		width: 100%;
+		box-sizing: content-box;
 
 		h1,h2,h3 {
 			text-align: center;
 		}
 
-			.container {
+		#main {
 			position: fixed;
-			top: 30%;
+			top: 15%;
 			width: 100%;
-			left: 10%;
+			bottom: 10%;
+			overflow: scroll;
+			text-align: center;
 		}
 
-		nav {
+		
+		nav.nav-extended {
+
+			position: fixed;
+			height: 15%;
+			border-bottom: 1px solid #eee;
 
 			#welcome-nav {
 				position: relative;
-				top: 0px;
-				height: 9%;
-				width: 100%;
+				top: 0%;
+				height: 5%;
+				width: inherit;
+				text-align: right;
+				padding: 0px;
+				margin: 0px;
 
 			}
 
 			#nav-2 {
 				position: relative;
-				top: 10%;
+				top: 8%;
 				height: 10%;
-				width: 100%;
+				width: inherit;
+				border-bottom: 1px solid #eee;
 			}
 
 			#search {
 				position: relative;
 				top: 20%;
-				width: 100%;
+				width: inherit;
+				height: 5%;
 
 			}	
 		}
 
-
-
 		.card {
 			padding: 3%;
 			margin: 5%;
+			text-align: left;
 
 			h3 {
+				text-align: center;
+			}
+
+			p {
 				text-align: center;
 			}
 
@@ -62,10 +80,12 @@ html {
 
 		footer {
 			position: fixed;
-			bottom: 10px;
+			bottom: 0px;
 			width: 100%;
+			height: 6%;
 			color: #fff;
 			text-align: center;
+
 		}
 
 	}

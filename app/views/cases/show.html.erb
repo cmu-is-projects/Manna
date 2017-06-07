@@ -1,3 +1,5 @@
+<div id="case">
+
 <p id="notice"><%= notice %></p>
 <% if can? :read, @case %>
   <div class = "row">
@@ -21,7 +23,7 @@
       </div></div>
   </div>
 
-
+<div class = "card">
   <div class = "row">
     <div class = "eight columns">
       <h4 class = "description_below">Client</h4>
@@ -80,6 +82,8 @@
     <% end %>
   </div>
 
+  </div>
+
   <!-- DISQUS -->
   <div id="disqus_thread"></div>
   <script>
@@ -105,3 +109,5 @@
 <% else %>
   <h3>You don't have permission to view this</h3>
 <% end %>
+
+</div>
