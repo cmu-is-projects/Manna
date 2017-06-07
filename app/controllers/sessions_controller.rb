@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
+  skip_before_action :check_login, only: [:new, :create]
+
   def new
+    if !current_user.nil?
+        redirect_to home_path
+    end
   end
 
   def create

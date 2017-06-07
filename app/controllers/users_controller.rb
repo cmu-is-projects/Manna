@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :login_required, except: [:new, :create]
+  # before_filter :login_required, except: [:new, :create]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
-
+  def index
+    @users = User.alphabetical.paginate(page: params[:page]).per_page(10)
+  end
 
   # GET /users/1
   # GET /users/1.json

@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.string :phone
       t.string :role
-      t.boolean :is_care_deacon, default: true
       t.boolean :active, default: true
 
       t.timestamps null: false
