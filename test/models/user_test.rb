@@ -32,7 +32,8 @@ class UserTest < ActiveSupport::TestCase
 
   #role
   should allow_value("admin").for(:role)
-  should allow_value("deacon").for(:role)
+  should allow_value("care_deacon").for(:role)
+  should_not allow_value("care deacon").for(:role)
   should_not allow_value("bad").for(:role)
   should_not allow_value("hacker").for(:role)
   should_not allow_value(10).for(:role)
@@ -42,8 +43,8 @@ class UserTest < ActiveSupport::TestCase
   context "Creating a context for users" do
     setup do
       create_users
-      create_cases
-      create_votes
+      # create_cases
+      # create_votes
       # create_documents
       # create_case_documents
     end
@@ -51,8 +52,8 @@ class UserTest < ActiveSupport::TestCase
     teardown do
       # remove_case_documents
       # remove_documents
-      remove_votes
-      remove_cases
+      # remove_votes
+      # remove_cases
       remove_users
     end
 
@@ -63,33 +64,33 @@ class UserTest < ActiveSupport::TestCase
     end
 
     should "show that there are 4 active users" do
-      assert_equal 4, User.active.size
-      assert_equal ["Chen", "Heimann", "Seed", "Wu"], User.active.map{|e| e.last_name}.sort
+      assert_equal 5, User.active.size
+      assert_equal ["Card", "Chen", "Heimann", "Seed", "Wu"], User.active.map{|e| e.last_name}.sort
     end
 
-    should "show that there are 4 deacons" do
-      assert_equal 4, User.deacons.size
-      assert_equal ["Chen", "Heimann", "Troy", "Wu"], User.deacons.map{|e| e.last_name}.sort
+    should "show that there are 5 deacons" do
+      assert_equal 5, User.deacons.size
+      assert_equal ["Card", "Chen", "Heimann", "Troy", "Wu"], User.deacons.map{|e| e.last_name}.sort
     end
 
-    should "show that there is 1 care deacon" do
-      assert_equal 1, User.care_deacons.size
-      assert_equal ["Wu"], User.care_deacons.map{|e| e.last_name}.sort
+    should "show that there are 2 care deacons" do
+      assert_equal 2, User.care_deacons.size
+      assert_equal ["Card", "Troy"], User.care_deacons.map{|e| e.last_name}.sort
     end
 
-    should "show that there are 3 financial deacons" do
-      assert_equal 3, User.financial_deacons.size
-      assert_equal ["Chen", "Heimann", "Troy"], User.financial_deacons.map{|e| e.last_name}.sort
+    should "show that there is 1 financial deacon" do
+      assert_equal 1, User.financial_deacons.size
+      assert_equal ["Heimann"], User.financial_deacons.map{|e| e.last_name}.sort
     end
 
-    should "show that there is 1 care connector" do
-      assert_equal 1, User.care_connectors.size
-      assert_equal ["Seed"], User.care_connectors.map{|e| e.last_name}.sort
+    should "show that there is 1 staff member" do
+      assert_equal 1, User.staffs.size
+      assert_equal ["Seed"], User.staffs.map{|e| e.last_name}.sort
     end
 
     should "show that the alphabetical scope works" do
-      assert_equal 5, User.alphabetical.size
-      assert_equal ["Chen", "Heimann", "Seed", "Troy", "Wu"], User.alphabetical.map{|e| e.last_name}.sort
+      assert_equal 6, User.alphabetical.size
+      assert_equal ["Card", "Chen", "Heimann", "Seed", "Troy", "Wu"], User.alphabetical.map{|e| e.last_name}.sort
     end
 
     should "show that the name method works" do
@@ -104,12 +105,17 @@ class UserTest < ActiveSupport::TestCase
       assert_equal "4089315510", @jason.phone
     end
 
+    should "show that role_display works properly" do
+      assert_equal @paula.role_display, "care deacon"
+      assert_equal @jason.role_display, "admin"
+      assert_equal @jon.role_display, "head deacon"
+      assert_equal @larry.role_display, "financial deacon"
+    end
+
 
     should "have working role? method to be used in ability.rb" do
       assert_equal true, @jason.role?(:admin)
-      assert_equal true, @jon.role?(:deacon)
-      assert_equal false, @jason.is_care_deacon?
-      assert_equal true, @jon.is_care_deacon?
+      assert_equal true, @jon.role?(:head_deacon)
     end
   end
 end
