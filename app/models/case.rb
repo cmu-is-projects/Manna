@@ -25,11 +25,21 @@ class Case < ActiveRecord::Base
   scope :by_client_name,      -> { order("client_name ASC") }
 
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where(deacon_id: user_id)}
-  scope :not_voted_by_deacon,  -> (user_id) {joins(:votes).where.not(deacon_id: user_id)}
+  scope :not_voted_by_deacon,  -> (user_id) {joins(:votes).where.not(deacon_id: user_id)} #this is incorrect, return when nil
 
   #methods
   def set_date
     self.date_submitted = Date.current
+  end
+
+  def status_display
+    if self.status == "check_signed"
+      return "check signed"
+    elsif self.status == "check_processed"
+      return "check processed"
+    else
+      return self.status
+    end
   end
 
   def self.search(search)

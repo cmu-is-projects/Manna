@@ -39,6 +39,18 @@ class User < ActiveRecord::Base
     self.role.to_sym == authorized_role
   end
 
+  def role_display
+    if self.role == "care_deacon"
+      return "care deacon"
+    elsif self.role == "financial_deacon" 
+      return "financial deacon"
+    elsif self.role == "head_deacon"
+      return "head deacon"
+    else
+      return self.role
+    end
+  end
+
   def self.authenticate(email,password)
     find_by_email(email).try(:authenticate, password)
   end
