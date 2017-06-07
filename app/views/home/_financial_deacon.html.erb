@@ -23,6 +23,8 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @cases_need_voting, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+
 
 </div>
 
@@ -51,4 +53,6 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @submitted_cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+
 </div>

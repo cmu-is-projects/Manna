@@ -1,53 +1,67 @@
 <div class= "row">
+
   <h1>Approved Cases</h1>
 
-  <table class = "u-full-width">
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Client Name</th>
-      <th>Assigned Deacon</th>
-      <th>Status</th>
-      <th>Date submitted</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for c in @approved_cases %>
-      <tr>
-        <td><%= link_to "#{c.subject}", c %></td>
-        <td><%= c.client_name %></td>
-        <td><%= c.deacon.proper_name %></td>
-        <td><%= c.status_display.capitalize %></td>
-        <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% if !@approved_cases.empty? %>
+    <table class = "u-full-width">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Client Name</th>
+          <th>Assigned Deacon</th>
+          <th>Status</th>
+          <th>Date submitted</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for c in @approved_cases %>
+          <tr>
+            <td><%= link_to "#{c.subject}", c %></td>
+            <td><%= c.client_name %></td>
+            <td><%= c.deacon.proper_name %></td>
+            <td><%= c.status_display.capitalize %></td>
+            <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @approved_cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+  <% else %>
+    <p>No cases show.</p>
+  <% end %>
+
+
 </div>
 
 <div class= "row">
   <h1>All Cases</h1>
 
-  <table class = "u-full-width">
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Client Name</th>
-      <th>Assigned Deacon</th>
-      <th>Status</th>
-      <th>Date submitted</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for c in @all_cases %>
-      <tr>
-        <td><%= link_to "#{c.subject}", c %></td>
-        <td><%= c.client_name %></td>
-        <td><%= c.deacon.proper_name %></td>
-        <td><%= c.status_display.capitalize %></td>
-        <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% if !@all_cases.empty? %>
+    <table class = "u-full-width">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Client Name</th>
+          <th>Assigned Deacon</th>
+          <th>Status</th>
+          <th>Date submitted</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for c in @all_cases %>
+          <tr>
+            <td><%= link_to "#{c.subject}", c %></td>
+            <td><%= c.client_name %></td>
+            <td><%= c.deacon.proper_name %></td>
+            <td><%= c.status_display.capitalize %></td>
+            <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @all_cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+  <% else %>
+    No cases to show.
+  <% end %>
+
 </div>
