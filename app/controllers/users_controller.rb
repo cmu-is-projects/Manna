@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   authorize_resource
 
   def index
-    @users = User.alphabetical.paginate(page: params[:page]).per_page(10)
+    @active_users = User.active.alphabetical.paginate(page: params[:page]).per_page(10)
+    if (current_user.role?(:admin) || current_user.role?(:head_deacon))
+      @inactive_users = User.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+    end
   end
 
   # GET /users/1

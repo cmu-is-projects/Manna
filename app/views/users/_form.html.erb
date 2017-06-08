@@ -21,6 +21,7 @@
     <%= f.input :active, as: :radio_buttons %>
 
     <%= f.button :submit %>
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 
 <% end %>

@@ -26,7 +26,7 @@ class Case < ActiveRecord::Base
   scope :by_client_name,      -> { order("client_name ASC") }
 
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
-  # scope :not_voted_by_deacon,  -> (user_id) 
+ 
 
   def self.not_voted_by_deacon(user)
     cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)

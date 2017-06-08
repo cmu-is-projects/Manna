@@ -59,9 +59,16 @@
       </div>
     </div>
 
+    <% if !@case.recommendation.nil? %>
+      <div class = "row">
+        <h4 class = "description_below">Recommendation</h4>
+        <p> <%= @case.recommendation %> </p>
+      </div>
+    <% end %>
+
     <div class = "row">
       <h4 class = "description_below">Notes</h4>
-      <p> <%= @case.notes ? nil : "None!"%> </p>
+      <p> <%= @case.notes %> </p>
     </div>
 
 

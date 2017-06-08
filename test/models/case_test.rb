@@ -11,11 +11,10 @@ class CaseTest < ActiveSupport::TestCase
   should validate_presence_of(:subject)
 
   should allow_value("submitted").for(:status)
-  should allow_value("review in progress").for(:status)
   should allow_value("approved").for(:status)
   should allow_value("rejected").for(:status)
-  should allow_value("check signed").for(:status)
-  should allow_value("check processed").for(:status)
+  should allow_value("check_signed").for(:status)
+  should allow_value("check_processed").for(:status)
   should_not allow_value("bad").for(:status)
   should_not allow_value("hacker").for(:status)
   should_not allow_value(10).for(:status)
@@ -47,9 +46,9 @@ class CaseTest < ActiveSupport::TestCase
       assert_equal ["Gordon Ramsay", "Jonathan Tsao", "Evan Li", "Thomas Lu", "Spencer Poon", "Molly Chou", "Catherine Zeng"], Case.chronological.map{|e| e.client_name}
     end
 
-    should "show that there is one submitted case " do
-      assert_equal 1, Case.submitted.size
-      assert_equal ["Gordon Ramsay"], Case.submitted.map{|e| e.client_name}
+    should "show that there are two submitted cases" do
+      assert_equal 2, Case.submitted.size
+      assert_equal ["Gordon Ramsay", "Jonathan Tsao"], Case.submitted.map{|e| e.client_name}.sort
     end
 
     should "show that there are 10 reviewed cases " do
