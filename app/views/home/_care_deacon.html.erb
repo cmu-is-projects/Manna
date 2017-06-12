@@ -1,12 +1,7 @@
-<% if logged_in? %>
-<!-- <p id="notice"><%= notice %></p> -->
-
-<% if !@cases.empty? %>
-  <h1>Listing Cases</h1>
-
-  <table class = "striped responsive-table centered">
+<h1>Your Cases</h1>
+<% if !@cases_user.empty? %>
+  <table class = "u-full-width">
     <thead>
-
       <tr>
         <th>Subject</th>
         <th>Client Name</th>
@@ -16,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for c in @cases %>
+      <% for c in @cases_user %>
         <tr>
           <td><%= link_to "#{c.subject}", c %></td>
           <td><%= c.client_name %></td>
@@ -27,18 +22,8 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
 
+  <%= will_paginate @cases_user, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
 <% else %>
-  <p>No cases in the system.</p>
-<% end %>
-
-
-<br>
-<br>
-<br>
-<%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
-<% else %>
-  <p>please log in</p>
-
+  <p>No cases to show.</p>
 <% end %>

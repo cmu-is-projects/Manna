@@ -7,7 +7,6 @@ FactoryGirl.define do
     password "meh"
     phone "4089315510"
     role "admin"
-    is_care_deacon false
     active true
   end
 
@@ -17,11 +16,11 @@ FactoryGirl.define do
     summary "Refer to documents"
     status "submitted"
     subject "Paying rent"
-    association :deacon, factory: :user
+    association :care_deacon, factory: :user
   end
 
   factory :vote do
-    association :deacon, factory: :user
+    association :financial_deacon, factory: :user
     association :case
     decision "yes"
   end

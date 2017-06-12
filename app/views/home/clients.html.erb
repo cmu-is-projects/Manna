@@ -1,8 +1,25 @@
 <div class = "row">
-	<div class="col s6 offset-s2">
-	  <h3>List of Clients</h3>
-	  <% Case.all.map do |c| %>
-	      <%= c.client_name %><br>
-	  <% end %>
-	 </div>
+  <h1>List of Clients</h1>
+	<table class = "col s6 offset-s2">
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Case Subject</th>
+        <th>Date submitted</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for c in @all_cases %>
+        <tr>
+          <td><%= c.client_name %></td>
+          <td><%= link_to "#{c.subject}", c %></td>
+          <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+          <td><%= c.status_display.capitalize %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
 </div>
