@@ -3,10 +3,12 @@ $primary-color: color("deep-orange", "lighten-1") !default;
 $secondary-color: color("brown", "darken-2") !default;
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "include-media";
 
 html {
 
 	font-family: GillSans;
+
 
 	body {
 		position: fixed;
@@ -18,13 +20,21 @@ html {
 			text-align: center;
 		}
 
+
+
 		#main {
 			position: fixed;
 			top: 15%;
-			width: 100%;
+			width: 70%;
+			left: 15%;
 			bottom: 10%;
 			overflow: scroll;
 			text-align: center;
+
+			@include media(">phone", "<=tablet") {
+				width: 90%;
+				left: 5%;
+			}
 		}
 
 		
@@ -55,7 +65,7 @@ html {
 
 			#search {
 				position: relative;
-				top: 20%;
+				top: 13%;
 				width: inherit;
 				height: 5%;
 
@@ -67,12 +77,16 @@ html {
 			margin: 5%;
 			text-align: left;
 
-			h3 {
+			h1,h2,h3,h4  {
 				text-align: center;
 			}
 
 			p {
 				text-align: center;
+			}
+
+			#case {
+				text-align: left;
 			}
 
 

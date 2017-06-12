@@ -1,5 +1,6 @@
 <div id="case">
 
+<div class ="card">
 <p id="notice"><%= notice %></p>
 <% if can? :read, @case %>
   <div class = "row">
@@ -10,7 +11,7 @@
   <div class="row">
     <div class = "col s12">
       <div class = "row">
-        <div class = "col s12 click_me">
+        <div class = "col s12">
             <%= link_to new_vote_taken_path(@case.id), remote: true do%>
               <h2>Votes:
                 <span class="num_yes"><%= @case.votes.yes.count %></span> |
@@ -22,53 +23,59 @@
         </div>
       </div></div>
   </div>
+</div>
 
 <div class = "card">
   <div class = "row">
-    <div class = "eight columns">
-      <h4 class = "description_below">Client</h4>
-      <p><%= @case.client_name %></p>
-    </div>
-    <div class = "four columns">
-      <h4 class = "description_below">Status</h4>
-      <p><%= @case.status %></p>
+    <div class ="col s10 offset-s1">
+      <h4>Client:</h4><p><%= @case.client_name %></p>
+      <h4>Status:</h4> <p><%= @case.status %></p>
+      <h4>Description:</h4><p><%= @case.summary %></p>
+      <h4>Date Submitted:</h4><p><%= @case.date_submitted.to_formatted_s(:rfc822) %></p>
+    
+  </div>
+</div>
+</div>
+
+
+<% if @documents_list.nil? %>
+<div class="card">
+  <p><em>There are no documents.</em></p>
+</div>
+<% else %>
+<div class="card">
+  <div class = "row">
+    <div class ="col s10 offset-s1">
+      <h4>Documents/Attachments</h4>
+          <ul>
+          <% @documents_list.each do |document| %>
+              <li><%= link_to "#{document.name}", document.attachment_url %></li>
+            <% end %>
+          </ul>
+           <h4>File/Date Uploaded</h4>
+      </div>
     </div>
   </div>
 
-    <div class = "row">  <h4 class = "description_below">Description</h4></div>
-    <div class = "row">  <p><%= @case.summary %></p></div>
-    <div class = "row">
-      <div class = "four columns"> <h4 class = "description_below" >Documents</h4>
-      <% if @documents_list.nil? %>
-        <p><em>There are no documents.</em></p>
-      <% else %>
-      <ul>
-      <% @documents_list.each do |document| %>
-          <li><%= link_to "#{document.name}", document.attachment_url %></li>
-        <% end %>
-      </ul>
+<% end %>
 
-      <% end %>
-      </div>
-      <div class = "four columns">
-        <h4 class = "description_below">Deacon</h4>
-        <p><%= @case.deacon %> </p>
-      </div>
-      <div class = "four columns">
-        <h4 class = "description_below">Date Submitted</h4>
-        <p><%= @case.date_submitted.to_formatted_s(:rfc822) %></p>
-      </div>
-    </div>
+     
+
+
+
+
+<div class="card">
 
     <div class = "row">
-      <h4 class = "description_below">Notes</h4>
+      <h4 >Notes</h4>
       <p> <%= @case.notes ? nil : "None!"%> </p>
     </div>
+</div>
 
 
-
+<div class ="card">
   <div class = "row">
-    <div class = "ten columns">
+    <div class = "col s10 offset-s1">
       <% if can? :edit, @case %>
         <%= link_to 'Edit', edit_case_path(@case) %> |
       <% end %>
@@ -81,9 +88,11 @@
       </div>
     <% end %>
   </div>
+  </div>
 
   </div>
 
+<div class="card">
   <!-- DISQUS -->
   <div id="disqus_thread"></div>
   <script>
@@ -110,4 +119,5 @@
   <h3>You don't have permission to view this</h3>
 <% end %>
 
+</div>
 </div>
