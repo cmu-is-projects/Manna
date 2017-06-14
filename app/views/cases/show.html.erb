@@ -1,33 +1,30 @@
 <div id="case">
-
-<div class ="card">
-<p id="notice"><%= notice %></p>
-<% if can? :read, @case %>
   <div class = "row">
     <div class = "col s12">
       <h2> <%= @case.subject %></h2>
     </div>
   </div>
-  <div class="row">
-    <div class = "col s12">
-      <div class = "row">
 
-        <div class = "col s12">
+<div class ="card">
+<% if can? :read, @case %>
 
-          <% unless current_user.role?(:staff) || current_user.role?(:care_deacon) %>
+    <div class = "row">
+      <div class = "col s12">
 
-            <%= link_to new_vote_taken_path(@case.id), remote: true do%>
-            <h2>Votes:
-              <span class="num_yes"><%= @case.votes.yes.count %></span> |
-              <span class ="num_no"><%= @case.votes.no.count%></span>
-            </h2>
-          <% end %>
+        <% unless current_user.role?(:staff) || current_user.role?(:care_deacon) %>
+
+          <%= link_to new_vote_taken_path(@case.id), remote: true do%>
+          <h3>Vote</h3>
         <% end %>
+        <h3>Tally:
+            <span class="num_yes"><%= @case.votes.yes.count %></span> |
+            <span class ="num_no"><%= @case.votes.no.count%></span>
+        </h3>
+      <% end %>
 
 
-          <div id="vote-form" style="display:none;"></div>
-        </div>
-      </div></div>
+        <div id="vote-form" style="display:none;"></div>
+      </div>
   </div>
 </div>
 
@@ -71,10 +68,11 @@
 
 
 <div class="card">
-
     <div class = "row">
-      <h4 >Notes</h4>
-      <p> <%= @case.notes ? nil : "None!"%> </p>
+      <div class="col s10 offset-s1">
+        <h4>Notes</h4>
+        <p> <%= @case.notes ? nil : "None!"%> </p>
+      </div>
     </div>
 </div>
 
