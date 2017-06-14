@@ -134,6 +134,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    material_icons (2.2.1)
+      railties (>= 3.2)
     materialize-sass (0.98.2)
       sass (~> 3.3)
     meta_request (0.3.4)
@@ -287,6 +289,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy (= 2.4.3)
+  material_icons
   materialize-sass
   meta_request (= 0.3.4)
   minitest (= 5.8.4)
@@ -316,3 +319,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (= 3.1.0)
   wirble
+
+BUNDLED WITH
+   1.10.6

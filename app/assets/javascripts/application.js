@@ -14,5 +14,10 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require turbolinks
+
+//= require materialize-sprockets
 //= require_tree .
+
+$( document ).ready(function(){
+	$(".button-collapse").sideNav();
+});

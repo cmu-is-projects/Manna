@@ -1,5 +1,5 @@
 <% if logged_in? %>
-<div class = "row">
+
   
   <% if current_user.role? :care_deacon %>
     <%= render "care_deacon" %>
@@ -11,5 +11,9 @@
     <%= render "staff" %>
   <% end %>
 
-</div>
+
 <% end %>
+
+
+
+

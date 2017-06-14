@@ -1,42 +1,46 @@
 <% if logged_in? %>
 <!-- <p id="notice"><%= notice %></p> -->
 
-<% if !@cases.empty? %>
-  <h1>Listing Cases</h1>
+<div class="card">
+  <% if !@cases.empty? %>
+    <h2>Listing Cases</h2>
 
-  <table class = "u-full-width">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Client Name</th>
-        <th>Assigned Deacon</th>
-        <th>Status</th>
-        <th>Date submitted</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for c in @cases %>
+    <table class = "striped responsive-table centered">
+      <thead>
+
         <tr>
-          <td><%= link_to "#{c.subject}", c %></td>
-          <td><%= c.client_name %></td>
-          <td><%= c.deacon.proper_name %></td>
-          <td><%= c.status_display.capitalize %></td>
-          <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+          <th>Subject</th>
+          <th>Client Name</th>
+          <th>Assigned Deacon</th>
+          <th>Status</th>
+          <th>Date submitted</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= will_paginate @cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      </thead>
+      <tbody>
+        <% for c in @cases %>
+          <tr>
+            <td><%= link_to "#{c.subject}", c %></td>
+            <td><%= c.client_name %></td>
+            <td><%= c.deacon %></td>
+            <td><%= c.status_display.capitalize %></td>
+            <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
 
-<% else %>
-  <p>No cases in the system.</p>
-<% end %>
+  <% else %>
+    <p>No cases in the system.</p>
+  <% end %>
 
 
-<br>
+  <br>
+  <br>
+  <br>
+  <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
+  <% else %>
+    <p>please log in</p>
 
-<%= link_to '+NEW CASE', new_case_path %>
-<% else %>
-  <p>please log in</p>
-
-<% end %>
+  <% end %>
+</div>
