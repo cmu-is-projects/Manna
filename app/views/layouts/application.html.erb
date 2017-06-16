@@ -7,27 +7,21 @@
 
   <!-- add favicon later -->
   <%= favicon_link_tag 'favicon.png' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <!--  -->
 
 
 </head>
 <body>
-  <div class = "container">
-
-    <%= render 'partials/navigation' %>
-    <!-- search bar -->
-    <%= form_tag(cases_path, :method => "get", id: "search-form") do %>
-      <div class = "row">
-        <div class = "ten columns"><%= text_field_tag :search, params[:search], placeholder: "Search Cases" %></div>
-        <div class = "two columns"><%= submit_tag "Search", :name => nil,   :id => 'search_button' %></div>
-      </div>
-
-    <% end %>
-
+ <%= render 'partials/navigation' %>
+ <div id="main">
     <%= yield %>
-    <%= render 'partials/footer' %>
-  </div>
+</div>
+
+  
+
+  <%=render 'partials/footer' %>
 </body>
 </html>
