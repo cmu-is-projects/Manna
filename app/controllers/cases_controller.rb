@@ -86,6 +86,6 @@ class CasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_params
-      params.require(:case).permit(:client_name, :subject, :notes, :date_submitted, :summary, :status, :deacon_id, :document_ids => [], documents_attributes: [:id, :name, :attachment, :remove_attachment, :_destroy])
+      params.require(:case).permit(:client_name, :subject, :notes, :recommendation, :date_submitted, :summary, :status, :deacon_id, :document_ids => [], documents_attributes: [:id, :name, :attachment, :remove_attachment, :_destroy])
     end
 end

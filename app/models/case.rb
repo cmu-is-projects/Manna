@@ -1,3 +1,4 @@
+include TwilioConnection
 class Case < ActiveRecord::Base
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   before_create :set_date
