@@ -17,7 +17,7 @@
 <body>
  <%= render 'partials/navigation' %>
  <div id="main">
-    <%= @current_user.nil? ? "" : @current_user.role %>
+   
     <%= yield %>
 </div>
 

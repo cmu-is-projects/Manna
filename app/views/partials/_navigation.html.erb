@@ -27,23 +27,7 @@
 
   </div>
 
-        <ul id="mobile-demo" class=" side-nav">
-        
-
-        <li><%= link_to 'Home', home_path %></li>
-        <li><%= link_to 'Submit', new_case_path %></li>
-        <li><%= link_to 'Cases', cases_path %></li>
-        <li><%= link_to 'Users', users_path %></li>
-        <li>
-            <% if logged_in? %>
-              <!-- <%= current_user.proper_name %> | <%= current_user.role %><br> -->
-              <%= link_to 'Logout', logout_path %>
-            <% else %>
-              <%= link_to 'Login', login_path %>
-            <% end %>
-        </li>
-      </ul>
-  <%= form_tag(cases_path, :method => "get", id: "search-form") do %>
+<%= form_tag(cases_path, :method => "get", id: "search-form") do %>
   <div class = "row deep-orange lighten-2 ">
 
     <div class = "col hide-on-med-and-down">
@@ -58,6 +42,26 @@
   </div>
 
 <% end %>
+
+<!-- MOBILE NAV LINKS -->
+<ul id="mobile-demo" class=" side-nav">
+  
+
+  <li><%= link_to 'Home', home_path %></li>
+  <li><%= link_to 'Submit', new_case_path %></li>
+  <li><%= link_to 'Cases', cases_path %></li>
+  <li><%= link_to 'Users', users_path %></li>
+  <li>
+      <% if logged_in? %>
+        <!-- <%= current_user.proper_name %> | <%= current_user.role %><br> -->
+        <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <%= link_to 'Login', login_path %>
+      <% end %>
+  </li>
+</ul>
+
+
 
 
 
