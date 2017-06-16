@@ -1,5 +1,5 @@
 <div  class="deep-orange lighten-2" id ="welcome-nav">
-  Welcome, <%= @current_user %>!
+  Welcome, <%= @current_user.nil? ? "Guest" : @current_user.proper_name %>!
 </div>
 <nav class="nav">
 
@@ -23,13 +23,45 @@
         </li>
       </ul>
 
+
+
   </div>
-  <%= form_tag(cases_path, :method => "get", id: "search-form") do %>
+
+<%= form_tag(cases_path, :method => "get", id: "search-form") do %>
   <div class = "row deep-orange lighten-2 ">
-    <div class = "col s10 offset-s1 hide-on-med-and-down"><%= text_field_tag :search, params[:search], placeholder: "search cases" %></div>
+
+    <div class = "col hide-on-med-and-down">
+    <label for="search"><i class="material-icons">search</i></label>
+    </div>
+    <div class= "col s10 hide-on-med-and-down">
+    <%= text_field_tag :search, params[:search], placeholder: "" %>
+    </div>
+    <div class="col hide-on-med-and-down">
+    <i class="material-icons">close</i>
+    </div>
   </div>
 
 <% end %>
+
+<!-- MOBILE NAV LINKS -->
+<ul id="mobile-demo" class=" side-nav">
+  
+
+  <li><%= link_to 'Home', home_path %></li>
+  <li><%= link_to 'Submit', new_case_path %></li>
+  <li><%= link_to 'Cases', cases_path %></li>
+  <li><%= link_to 'Users', users_path %></li>
+  <li>
+      <% if logged_in? %>
+        <!-- <%= current_user.proper_name %> | <%= current_user.role %><br> -->
+        <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <%= link_to 'Login', login_path %>
+      <% end %>
+  </li>
+</ul>
+
+
 
 
 
