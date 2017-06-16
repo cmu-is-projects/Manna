@@ -1,5 +1,5 @@
 <div  class="deep-orange lighten-2" id ="welcome-nav">
-  Welcome, <%= @current_user %>!
+  Welcome, <%= @current_user.nil? ? "Guest" : @current_user.proper_name %>!
 </div>
 <nav class="nav">
 

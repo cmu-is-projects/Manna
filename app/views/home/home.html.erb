@@ -1,7 +1,7 @@
 <% if logged_in? %>
 
   
-  <% if current_user.role? :care_deacon %>
+  <% if current_user.role? :deacon %>
     <%= render "care_deacon" %>
   <% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
     <%= render "head_deacon" %>
