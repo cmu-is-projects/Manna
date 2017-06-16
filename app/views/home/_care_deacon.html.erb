@@ -1,7 +1,7 @@
 
   <h3>Your Cases</h3>
   <!-- SUBMIT CASE BUTTON -->
-  
+
   <% if !@cases_user.nil? and !@cases_user.empty? %>
     <div class = "card">
       <table class = "u-full-width">
@@ -34,3 +34,5 @@
       <h4>No cases to show.</h4>
     </div>
   <% end %>
+
+<%=link_to "New Case", new_case_path, :class => 'btn' %>
