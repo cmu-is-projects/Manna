@@ -1,5 +1,7 @@
 <div  class="deep-orange lighten-2" id ="welcome-nav">
-  Welcome, <%= @current_user %>!
+  <% if logged_in? %>
+    Welcome, <%= current_user.proper_name %>!
+  <% end %>
 </div>
 <nav class="nav">
 

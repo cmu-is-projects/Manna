@@ -62,7 +62,8 @@
 
 <% end %>
 
-     
+ <div class="card">  
+   <div class ="col s10 offset-s1">  
     <% if !@case.recommendation.nil? %>
       <div class = "row">
         <h4 class = "description_below">Recommendation</h4>
@@ -74,6 +75,7 @@
       <h4 class = "description_below">Notes</h4>
       <p> <%= @case.notes %> </p>
     </div>
+  </div>
 </div>
 
 
