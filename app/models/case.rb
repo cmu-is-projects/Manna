@@ -2,13 +2,17 @@ include TwilioConnection
 class Case < ActiveRecord::Base
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   before_create :set_date
+  after_create :send_submitted_sms
+  after_update :send_update_sms
+
+  $STATUSES = %w[submitted approved rejected check_signed check_processed]
 
   has_many :votes
   has_many :case_documents
   has_many :documents, through: :case_documents
 
   validates_presence_of :client_name, :summary, :subject
-  validates_inclusion_of :status, in: %w[submitted approved rejected check_signed check_processed], message: "is not an option"
+  validates_inclusion_of :status, in: $STATUSES, message: "is not an option"
   accepts_nested_attributes_for :documents, reject_if: lambda { |document| document[:name].blank? }, allow_destroy: true
 
 
@@ -55,6 +59,23 @@ class Case < ActiveRecord::Base
 
   def has_voted?(user)#takes all the votes in that particular case, and see if the current user's id
     self.votes.map(&:deacon_id).include?(user.id)
+  end
+
+  private
+  def send_submitted_sms
+    TwilioConnection::send_submitted_sms(self)
+  end
+
+  def send_update_sms
+    if self.status == 'approved'
+      TwilioConnection::send_approved_sms(self)
+    elsif self.status == 'rejected'
+      TwilioConnection::send_rejected_sms(self)
+    elsif self.status == 'check_processed'
+      TwilioConnection::send_processed_sms(self)
+    elsif self.status == 'check_signed'
+      TwilioConnection::send_signed_sms(self)
+    end
   end
 
 end

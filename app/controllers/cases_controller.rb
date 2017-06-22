@@ -64,10 +64,10 @@ class CasesController < ApplicationController
   # PATCH/PUT /cases/1.json
   def update
     if @case.update(case_params)
-         redirect_to case_path(@case), notice: "Successfully updated case: #{@case.subject} for #{@case.client_name}."
-       else
-         render action: 'edit'
-       end
+      redirect_to case_path(@case), notice: "Successfully updated case: #{@case.subject} for #{@case.client_name}."
+      else
+        render action: 'edit'
+      end
   end
 
   # DELETE /cases/1
