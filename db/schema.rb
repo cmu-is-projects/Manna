@@ -11,16 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404021234) do
+ActiveRecord::Schema.define(version: 20170215003253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "case_documents", force: :cascade do |t|
+  create_table "attachments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "doc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "case_attachments", force: :cascade do |t|
     t.integer  "case_id"
-    t.integer  "document_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "attachment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "cases", force: :cascade do |t|
@@ -35,13 +42,6 @@ ActiveRecord::Schema.define(version: 20170404021234) do
     t.string   "subject"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-  end
-
-  create_table "documents", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "attachment"
   end
 
   create_table "users", force: :cascade do |t|

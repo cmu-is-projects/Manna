@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :documents
-  resources :case_documents
+  resources :attachment
+  resources :case_attachments
   resources :votes
   # resources :cases do
   #   resources :votes

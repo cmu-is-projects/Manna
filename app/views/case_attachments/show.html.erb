@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Case:</strong>
+  <%= @case_attachment.case_id %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @case_attachment.attachment_id %>
+</p>
+
+<%= link_to 'Edit', edit_case_attachment_path(@case_attachment) %> |
+<%= link_to 'Back', case_attachments_path %>

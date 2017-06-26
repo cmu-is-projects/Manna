@@ -9,12 +9,12 @@ class Case < ActiveRecord::Base
   $STATUSES = %w[submitted approved rejected check_signed check_processed]
 
   has_many :votes
-  has_many :case_documents
-  has_many :documents, through: :case_documents
+  has_many :case_attachments
+  has_many :attachments, through: :case_attachments
 
   validates_presence_of :client_name, :summary, :subject
   validates_inclusion_of :status, in: $STATUSES, message: "is not an option"
-  accepts_nested_attributes_for :documents, reject_if: lambda { |document| document[:name].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :attachments, reject_if: lambda { |attachment| attachment[:name].blank? }, allow_destroy: true
 
 
   #scopes
