@@ -1,4 +1,5 @@
 include TwilioConnection
+include PgSearch
 class Case < ActiveRecord::Base
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   before_create :set_date
@@ -32,6 +33,11 @@ class Case < ActiveRecord::Base
 
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
  
+  pg_search_scope :search, against: [:client_first_name, :client_name], :using => {
+                dmetaphone: {},
+                trigram: {}
+              }
+  
 
   def self.not_voted_by_deacon(user)
     cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)
@@ -53,9 +59,9 @@ class Case < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-    where("client_name LIKE ? OR summary LIKE ? OR subject LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
-  end
+  # def self.search(search)
+  #   where("client_name LIKE ? OR summary LIKE ? OR subject LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  # end
 
   def has_voted?(user)#takes all the votes in that particular case, and see if the current user's id
     self.votes.map(&:deacon_id).include?(user.id)

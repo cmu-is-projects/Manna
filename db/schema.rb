@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170404021234) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "case_documents", force: :cascade do |t|
     t.integer  "case_id"
     t.integer  "document_id"
@@ -22,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170404021234) do
 
   create_table "cases", force: :cascade do |t|
     t.string   "client_name"
+    t.string   "client_first_name"
     t.date     "date_submitted"
     t.string   "summary"
     t.text     "notes"
@@ -29,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170404021234) do
     t.string   "status"
     t.integer  "deacon_id"
     t.string   "subject"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "documents", force: :cascade do |t|

@@ -11,12 +11,18 @@ class CasesController < ApplicationController
       if current_user.role?(:deacon) && current_user.is_care_deacon?
         if params[:search]
           @cases = Case.search(params[:search]).chronological.paginate(page: params[:page]).per_page(10)
+          if (@cases).size == 1
+            return redirect_to @cases.first
+          end
         else
           @cases = Case.for_deacon(current_user.id).chronological.paginate(page: params[:page]).per_page(10)
         end
       else
         if params[:search]
           @cases = Case.search(params[:search]).chronological.paginate(page: params[:page]).per_page(10)
+          if (@cases).size == 1
+            return redirect_to @cases.first
+          end
         else
           @cases = Case.chronological.paginate(page: params[:page]).per_page(10)
         end

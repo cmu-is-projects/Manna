@@ -2,6 +2,7 @@ class CreateCases < ActiveRecord::Migration
   def change
     create_table :cases do |t|
       t.string :client_name
+      t.string :client_first_name
       t.date :date_submitted
       t.string :summary
       t.text :notes
