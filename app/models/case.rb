@@ -1,14 +1,20 @@
+include TwilioConnection
+include PgSearch
 class Case < ActiveRecord::Base
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   before_create :set_date
+  after_create :send_submitted_sms
+  after_update :send_update_sms
+
+  $STATUSES = %w[submitted approved rejected check_signed check_processed]
 
   has_many :votes
-  has_many :case_documents
-  has_many :documents, through: :case_documents
+  has_many :case_attachments
+  has_many :attachments, through: :case_attachments
 
   validates_presence_of :client_name, :summary, :subject
-  validates_inclusion_of :status, in: %w[submitted approved rejected check_signed check_processed], message: "is not an option"
-  accepts_nested_attributes_for :documents, reject_if: lambda { |document| document[:name].blank? }, allow_destroy: true
+  validates_inclusion_of :status, in: $STATUSES, message: "is not an option"
+  accepts_nested_attributes_for :attachments, reject_if: lambda { |attachment| attachment[:name].blank? }, allow_destroy: true
 
 
   #scopes
@@ -26,7 +32,12 @@ class Case < ActiveRecord::Base
   scope :by_client_name,      -> { order("client_name ASC") }
 
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
-  # scope :not_voted_by_deacon,  -> (user_id) 
+ 
+  pg_search_scope :search, against: [:client_first_name, :client_name], :using => {
+                dmetaphone: {},
+                trigram: {}
+              }
+  
 
   def self.not_voted_by_deacon(user)
     cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)
@@ -48,12 +59,29 @@ class Case < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-    where("client_name LIKE ? OR summary LIKE ? OR subject LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
-  end
+  # def self.search(search)
+  #   where("client_name LIKE ? OR summary LIKE ? OR subject LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  # end
 
   def has_voted?(user)#takes all the votes in that particular case, and see if the current user's id
     self.votes.map(&:deacon_id).include?(user.id)
+  end
+
+  private
+  def send_submitted_sms
+    TwilioConnection::send_submitted_sms(self)
+  end
+
+  def send_update_sms
+    if self.status == 'approved'
+      TwilioConnection::send_approved_sms(self)
+    elsif self.status == 'rejected'
+      TwilioConnection::send_rejected_sms(self)
+    elsif self.status == 'check_processed'
+      TwilioConnection::send_processed_sms(self)
+    elsif self.status == 'check_signed'
+      TwilioConnection::send_signed_sms(self)
+    end
   end
 
 end

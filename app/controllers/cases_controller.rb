@@ -8,15 +8,16 @@ class CasesController < ApplicationController
   def index
     # if logged_in, can only see own if care_d or can see all of them if financial_d
     if logged_in?
-      if current_user.role?(:deacon) && current_user.is_care_deacon?
+
+      if current_user.role?(:care_deacon)
         if params[:search]
-          @cases = Case.search(params[:search]).chronological.paginate(page: params[:page]).per_page(10)
-        else
+          search_cases_for(params[:search])
+        else 
           @cases = Case.for_deacon(current_user.id).chronological.paginate(page: params[:page]).per_page(10)
         end
       else
         if params[:search]
-          @cases = Case.search(params[:search]).chronological.paginate(page: params[:page]).per_page(10)
+          search_cases_for(params[:search])
         else
           @cases = Case.chronological.paginate(page: params[:page]).per_page(10)
         end
@@ -30,13 +31,13 @@ class CasesController < ApplicationController
   # GET /cases/1
   # GET /cases/1.json
   def show
-    @documents_list = @case.documents.all
+    @attachments_list = @case.attachments.all
   end
 
   # GET /cases/new
   def new
     @case = Case.new
-    @case.documents.build
+    @case.attachments.build
     # @case.votes.case_id = self.id
     @case.votes.build
   end
@@ -64,10 +65,10 @@ class CasesController < ApplicationController
   # PATCH/PUT /cases/1.json
   def update
     if @case.update(case_params)
-         redirect_to case_path(@case), notice: "Successfully updated case: #{@case.subject} for #{@case.client_name}."
-       else
-         render action: 'edit'
-       end
+      redirect_to case_path(@case), notice: "Successfully updated case: #{@case.subject} for #{@case.client_name}."
+      else
+        render action: 'edit'
+      end
   end
 
   # DELETE /cases/1
@@ -86,6 +87,13 @@ class CasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_params
-      params.require(:case).permit(:client_name, :subject, :notes, :date_submitted, :summary, :status, :deacon_id, :document_ids => [], documents_attributes: [:id, :name, :attachment, :remove_attachment, :_destroy])
+      params.require(:case).permit(:client_name, :subject, :notes, :recommendation, :date_submitted, :summary, :status, :deacon_id, :attachment_ids => [], attachments_attributes: [:id, :name, :doc, :remove_doc, :_destroy])
     end
+
+    def search_cases_for(query)
+      @cases = Case.search(query).chronological.paginate(page: params[:page]).per_page(10)
+      if (@cases).size == 1
+        return redirect_to @cases.first
+      end
+    end 
 end

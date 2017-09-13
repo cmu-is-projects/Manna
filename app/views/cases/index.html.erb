@@ -21,7 +21,7 @@
           <tr>
             <td><%= link_to "#{c.subject}", c %></td>
             <td><%= c.client_name %></td>
-            <td><%= c.deacon %></td>
+            <td><%= c.deacon.proper_name %></td>
             <td><%= c.status_display.capitalize %></td>
             <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
           </tr>

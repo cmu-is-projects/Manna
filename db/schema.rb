@@ -11,32 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404021234) do
+ActiveRecord::Schema.define(version: 20170215003253) do
 
-  create_table "case_documents", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "doc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "case_attachments", force: :cascade do |t|
     t.integer  "case_id"
-    t.integer  "document_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "attachment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "cases", force: :cascade do |t|
     t.string   "client_name"
+    t.string   "client_first_name"
     t.date     "date_submitted"
     t.string   "summary"
-    t.string   "notes"
+    t.text     "notes"
+    t.text     "recommendation"
     t.string   "status"
     t.integer  "deacon_id"
     t.string   "subject"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "documents", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "attachment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -41,9 +41,9 @@
 </div>
 
 
-<% if @documents_list.nil? %>
+<% if @attachments_list.nil? %>
 <div class="card">
-  <p><em>There are no documents.</em></p>
+  <p><em>There are no attachments.</em></p>
 </div>
 <% else %>
 <div class="card">
@@ -51,8 +51,8 @@
     <div class ="col s10 offset-s1">
       <h4>Documents/Attachments</h4>
           <ul>
-          <% @documents_list.each do |document| %>
-              <li><%= link_to "#{document.name}", document.attachment_url %></li>
+          <% @attachments_list.each do |attachment| %>
+              <li><%= link_to "#{attachment.name}", attachment.doc_url %></li>
             <% end %>
           </ul>
            <h4>File/Date Uploaded</h4>
@@ -62,18 +62,20 @@
 
 <% end %>
 
-     
-
-
-
-
-<div class="card">
-    <div class = "row">
-      <div class="col s10 offset-s1">
-        <h4>Notes</h4>
-        <p> <%= @case.notes ? nil : "None!"%> </p>
+ <div class="card">  
+   <div class ="col s10 offset-s1">  
+    <% if !@case.recommendation.nil? %>
+      <div class = "row">
+        <h4 class = "description_below">Recommendation</h4>
+        <p> <%= @case.recommendation %> </p>
       </div>
+    <% end %>
+
+    <div class = "row">
+      <h4 class = "description_below">Notes</h4>
+      <p> <%= @case.notes %> </p>
     </div>
+  </div>
 </div>
 
 
@@ -111,7 +113,7 @@
   // };
 
   (function() { // DON'T EDIT BELOW THIS LINE
-  var d = document, s = d.createElement('script');
+  var d = attachment, s = d.createElement('script');
   s.src = 'https://manna-1.disqus.com/embed.js';
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);

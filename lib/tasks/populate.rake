@@ -93,7 +93,8 @@ namespace :db do
 
 	    # Creating some cases
 	    case1 = Case.new
-	    case1.client_name = 'John Doe'
+	    case1.client_name = 'Doe'
+	    case1.client_first_name = 'John'
 	    case1.date_submitted = Date.today.to_date
 	    case1.summary = '$1000 needed ASAP.'
 	    case1.notes = 'Client has not paid bill in several months. Needs urgent attention.'
@@ -103,7 +104,8 @@ namespace :db do
 	    case1.save!
 
 	    case2 = Case.new
-	    case2.client_name = 'John Doe'
+	    case2.client_name = 'Doe'
+	    case2.client_first_name = 'John'
 	    case2.date_submitted = Date.today.to_date
 	    case2.summary = '$200 needed ASAP.'
 	    case2.notes = 'Client needs money for food.'
