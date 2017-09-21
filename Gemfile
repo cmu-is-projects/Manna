@@ -50,7 +50,7 @@ gem 'twilio-ruby', '~> 4.11.1'
 # draggable objects
 # gem 'touchpunch-rails'
 # gem 'jquery-shapeshift-rails'
-gem 'isotope-rails', '~> 2.2', '>= 2.2.2'
+#gem 'isotope-rails', '~> 2.2', '>= 2.2.2'
 
 
 
