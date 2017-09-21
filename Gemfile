@@ -39,6 +39,8 @@ gem 'font-awesome-sass-rails', '3.0.2.2'
 gem 'geocoder'
 gem 'nested_form'
 gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
+
+# photo uploader
 gem 'carrierwave', '~> 1.0'
 gem 'responders', '~> 2.0'
 gem 'jquery-ui-rails'
