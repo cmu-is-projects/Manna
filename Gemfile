@@ -42,12 +42,15 @@ gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-r
 
 # photo uploader
 gem 'carrierwave', '~> 1.0'
+
 gem 'responders', '~> 2.0'
 gem 'jquery-ui-rails'
 gem 'twilio-ruby', '~> 4.11.1'
 
-
-
+# draggable objects
+# gem 'touchpunch-rails'
+# gem 'jquery-shapeshift-rails'
+gem 'isotope-rails', '~> 2.2', '>= 2.2.2'
 
 
 
