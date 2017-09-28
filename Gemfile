@@ -51,7 +51,7 @@ gem 'twilio-ruby', '~> 4.11.1'
 # gem 'touchpunch-rails'
 # gem 'jquery-shapeshift-rails'
 #gem 'isotope-rails', '~> 2.2', '>= 2.2.2'
-
+gem 'filterrific'
 
 
 group :development, :test do
