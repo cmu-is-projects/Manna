@@ -20,16 +20,11 @@
       <div class="row info">
 
 
-        <div class="col s12 m6 l4">
-          <div class="card-panel">
-            <span class="white-text">
-              Subject
-            </span>
-            <p> I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-        </div>
+<!--         <div class="col s12 m6 l4">
 
-        <div class="col s12 m6 l4">
+        </div> -->
+
+<!--         <div class="col s12 m6 l4">
           <div class="card-panel teal">
             <span class="white-text">I am a very simple card. I am good at containing small bits of information.
               I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
@@ -44,6 +39,8 @@
             </span>
           </div>
         </div>
+ --><%# if current_user.role? :care_deacon %>
+        <%= render "case_display" %>
 
       </div>
       <!-- </div> -->
