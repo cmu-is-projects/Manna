@@ -47,13 +47,13 @@
 
 
       <% if current_user.role? :care_deacon %>
-      <%= render "care_deacon" %>
+      <%#= render "care_deacon" %>
       <% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
-      <%= render "head_deacon" %>
+      <%#= render "head_deacon" %>
       <% elsif current_user.role? :financial_deacon %>
-      <%= render "financial_deacon" %>
+      <%#= render "financial_deacon" %>
       <% elsif current_user.role? :staff %>
-      <%= render "staff" %>
+      <%#= render "staff" %>
       <% end %>
     </div>
 
