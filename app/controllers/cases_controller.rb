@@ -26,6 +26,9 @@ class CasesController < ApplicationController
     else
       redirect_to home_path
     end
+
+
+
   end
 
   # GET /cases/1

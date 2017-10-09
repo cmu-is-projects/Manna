@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def home
     
-    @all_cases = Case.chronological.paginate(page: params[:page]).per_page(10)
+    # @all_cases = Case.chronological.paginate(page: params[:page]).per_page(10)
     @cases_current_user = Case.for_deacon(current_user.id).chronological.paginate(page: params[:page]).per_page(10)
     @cases_need_voting = Case.not_voted_by_deacon(current_user)
     
@@ -21,6 +21,17 @@ class HomeController < ApplicationController
     #     @cases_need_voting = Case.not_voted_by_deacon(current_user)
     #   end
     # end
+    # @filterrific = initialize_filterrific(
+    #   Case,
+    #   params[:filterrific]
+    # ) or return
+    # @all_cases = @filterrific.find.page(params[:page])
+
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+
   end
 
   def apply

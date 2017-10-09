@@ -19,6 +19,8 @@
 //= require materialize-sprockets
 //= require_tree .
 
+//= require filterrific/filterrific-jquery
+
 $( document ).ready(function(){
 	$(".button-collapse").sideNav();
 	$('select').material_select();
