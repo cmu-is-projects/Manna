@@ -85,13 +85,15 @@ html {
         }
 
         .info{
-            padding: 3%;
-            margin: 5%;
+            /*padding: 3%;
+            margin: 5%;*/
         }
 
         .card-panel{
             /*color: red;*/
             background-color: rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 0%;
         }
 
         .card {
@@ -101,8 +103,26 @@ html {
 
         }
 
+        .h {
+            border-radius: 20px 0px 0px 0px;
+            height: 5em;
+            width: 100%;
+            padding: 0px 0px 0px 0px !important; 
+        }
+
+        .card-tabs{
+            background-color: gray;
+            border-radius: 20px 0px 0px 20px;
+            padding: 0px 0px 0px 0px !important; 
+        }
+
+        .status-vote{
+
+        background-color: red;
+        }
+
         .needs-vote {
-            background-color: yellow;
+            background-color: light-gray;
         }
 
         footer {

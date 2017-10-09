@@ -4,12 +4,31 @@
     <% else %>
         <div class="card-panel">
     <% end %>
-    <!--         <span class="white-text">
-            I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-            </span> -->
-            <h3> <%= link_to "#{c.subject}", c %> </h3>
-            <p> <%= c.client_name %> </p>
-            <p> <%= c.status_display.capitalize %> </p>
-            <p> <%= c.summary %> </p>
+            <div class="row">
+                <div class="col s3 m3 l3 card-tabs"> 
+                    <div class="row">
+                        <% if !vote.nil? && vote.include?(c) %>
+                        <div class="col h status-vote">
+                        <%else%>
+                        <div class="col h">
+                        <%end%>
+                        <span> <%= c.status_display.capitalize %></span>
+                        </div>
+                        <div class="col h">
+                        <span> Deacon Name </span>
+                        </div>
+                        <div class="col h">
+                        <span> Date </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col s9 m9 l9">
+                    <h3> <%= link_to "#{c.subject}", c %> </h3>
+                    <p> <%= c.client_name %> </p>
+                    <p> <%= c.status_display.capitalize %> </p>
+        <!-- <p> <%#= c.summary %> </p> -->
+                </div>
+            </div>
         </div>
 </div>
