@@ -1,34 +1,21 @@
-<div class="col s12 m6 l4">
-    <% if !vote.nil? && vote.include?(c) %>
-        <div class="card-panel needs-vote">
-    <% else %>
-        <div class="card-panel">
-    <% end %>
-            <div class="row">
-                <div class="col s3 m3 l3 card-tabs"> 
-                    <div class="row">
-                        <% if !vote.nil? && vote.include?(c) %>
-                        <div class="col h status-vote">
-                        <%else%>
-                        <div class="col h">
-                        <%end%>
-                        <span> <%= c.status_display.capitalize %></span>
-                        </div>
-                        <div class="col h">
-                        <span> Deacon Name </span>
-                        </div>
-                        <div class="col h">
-                        <span> Date </span>
-                        </div>
-                    </div>
+ <%= link_to c do %>
+      <div class="col s12 m6">
+           <% if !vote.nil? && vote.include?(c) %>
+  <div class="card-panel big no-vote">
+        <% else %>
+        <div class="card-panel big">
+        <% end %>
+          <div class="card-panel small">
+            <div class="white pad">
 
-                </div>
-                <div class="col s9 m9 l9">
-                    <h3> <%= link_to "#{c.subject}", c %> </h3>
-                    <p> <%= c.client_name %> </p>
-                    <p> <%= c.status_display.capitalize %> </p>
-        <!-- <p> <%#= c.summary %> </p> -->
-                </div>
+            <p class="large-text"> <%= c.subject %> </p>
+            <p> <%= c.client_name %> </p>
+            <p> <%= c.status_display.capitalize %> </p>
             </div>
+          </div>
         </div>
-</div>
+      </div>
+
+      <% end %>
+
+
