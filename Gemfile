@@ -39,14 +39,19 @@ gem 'font-awesome-sass-rails', '3.0.2.2'
 gem 'geocoder'
 gem 'nested_form'
 gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
+
+# photo uploader
 gem 'carrierwave', '~> 1.0'
+
 gem 'responders', '~> 2.0'
 gem 'jquery-ui-rails'
 gem 'twilio-ruby', '~> 4.11.1'
 
-
-
-
+# draggable objects
+# gem 'touchpunch-rails'
+# gem 'jquery-shapeshift-rails'
+#gem 'isotope-rails', '~> 2.2', '>= 2.2.2'
+gem 'filterrific'
 
 
 group :development, :test do

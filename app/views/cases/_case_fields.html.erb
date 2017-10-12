@@ -1,6 +1,7 @@
 <%= f.input :subject, placeholder: 'Paying for Medical Bill' %>
-<%= f.input :client_name, label: 'Assigned Deacon', placeholder: 'John Doe' %>
-<%= f.input :deacon_id, :collection => User.deacons.active.alphabetical, :include_blank => true %>
+<%= f.input :client_name, label: 'Client', placeholder: 'John Doe' %>
+<%= f.input :deacon_id, :collection => User.deacons.active.alphabetical %>
+ <!-- :include_blank => true  -->
 <%= f.input :summary, placeholder: 'Write description here...', as: :text, :input_html => { :rows => 10, :style => 'resize: none;'} %>
 <%= f.input :recommendation, placeholder: 'Any opinions you want to share?', as: :text, :input_html => { :rows => 5, :style => 'resize: none;'} %>
 <%= f.input :notes, placeholder: 'What was the final outcome of the case?', as: :text, :input_html => { :rows => 5, :style => 'resize: none;'} %>

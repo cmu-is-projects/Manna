@@ -1,18 +1,65 @@
 <% if logged_in? %>
 
-  
-  <% if current_user.role? :care_deacon %>
-    <%= render "care_deacon" %>
-  <% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
-    <%= render "head_deacon" %>
-  <% elsif current_user.role? :financial_deacon %>
-    <%= render "financial_deacon" %>
-  <% elsif current_user.role? :staff %>
-    <%= render "staff" %>
-  <% end %>
+<!--      <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div> -->
+<br>
+<br>
+<br>
 
 
-<% end %>
+    
+
+
+<!--         <div class="col s12 m6 l4">
+
+        </div> -->
+
+<!--         <div class="col s12 m6 l4">
+          <div class="card-panel teal">
+            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+            </span>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card-panel teal">
+            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+            </span>
+          </div>
+        </div>
+ --><%# if current_user.role? :care_deacon %>
+        <%= render "case_display" %>
+
+
+      <!-- </div> -->
+
+
+      <% if current_user.role? :care_deacon %>
+      <%#= render "care_deacon" %>
+      <% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
+      <%#= render "head_deacon" %>
+      <% elsif current_user.role? :financial_deacon %>
+      <%#= render "financial_deacon" %>
+      <% elsif current_user.role? :staff %>
+      <%#= render "staff" %>
+      <% end %>
+    </div>
+
+
+    <% end %>
 
 
 

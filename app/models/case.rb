@@ -32,12 +32,72 @@ class Case < ActiveRecord::Base
   scope :by_client_name,      -> { order("client_name ASC") }
 
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
+  scope :needs_vote, -> (user_id) {joins(:votes).where('votes.deacon_id is NULL')}
+
+  # scope :search_query, lambda { |query|
+  #   return nil  if query.blank?
+  #   # condition query, parse into individual keywords
+  #   terms = query.downcase.split(/\s+/)
+  #   # replace "*" with "%" for wildcard searches,
+  #   # append '%', remove duplicate '%'s
+  #   terms = terms.map { |e|
+  #     (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+  #   }
+  #   # configure number of OR conditions for provision
+  #   # of interpolation arguments. Adjust this if you
+  #   # change the number of OR conditions.
+  #   num_or_conditions = 2
+  #   where(
+  #     terms.map {
+  #       or_clauses = [
+  #         "LOWER(cases.first_name) LIKE ?",
+  #         "LOWER(cases.name) LIKE ?"
+  #         # "LOWER(case.email) LIKE ?"
+  #       ].join(' OR ')
+  #       "(#{ or_clauses })"
+  #     }.join(' AND '),
+  #     *terms.map { |e| [e] * num_or_conditions }.flatten
+  #   )
+  # }
+  # scope :sorted_by, lambda { |sort_option|
+  #   # extract the sort direction from the param value.
+  #   direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+  #   case sort_option.to_s
+  #   when /^created_at_/
+  #     order("students.created_at #{ direction }")
+  #   when /^name_/
+  #     order("LOWER(students.last_name) #{ direction }, LOWER(students.first_name) #{ direction }")
+  #   when /^country_name_/
+  #     order("LOWER(countries.name) #{ direction }").includes(:country)
+  #   else
+  #     raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+  #   end
+  # }
  
   pg_search_scope :search, against: [:client_first_name, :client_name], :using => {
                 dmetaphone: {},
                 trigram: {}
               }
   
+  # filterrific(
+  #   # default_filter_params: { sorted_by: 'chronological' },
+  #   available_filters: [
+  #     # :sorted_by,
+  #     :search_query,
+  #     :needs_vote
+  #   ]
+  # )
+
+  # def self.options_for_sorted_by
+  #   [
+  #     ['Name (a-z)', 'client_alphabetical'],
+  #     ['Registration date (newest first)', 'created_at_desc'],
+  #     ['Registration date (oldest first)', 'created_at_asc'],
+  #     ['Country (a-z)', 'country_name_asc']
+  #   ]
+  # end
+
+
 
   def self.not_voted_by_deacon(user)
     cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)

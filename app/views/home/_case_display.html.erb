@@ -1,0 +1,29 @@
+<%# for c in @cases_current_user %>
+<%#= render partial: "partials/card", locals: {c: c, vote: @cases_need_voting} %>
+
+<%# end %>
+
+<div class="center">
+  <!-- <div class="card"> -->
+  <div class="row info">
+
+    <% for c in @all_cases %>
+    <%= render partial: "partials/card", locals: {c: c, vote: @cases_need_voting} %>
+
+    <% end %>
+
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel big">
+          <div class="card-panel small">
+            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+            </span>
+          <!-- I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks. -->
+            <!-- </span> -->
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+            
+</div>

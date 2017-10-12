@@ -45,7 +45,7 @@ development:
   encoding: unicode
   database: demo_test_development
   pool: 5
-  username: mogh
+  username: anuradhasrikanth
   password:
   timeout: 5000
  
@@ -75,7 +75,7 @@ test:
   encoding: unicode
   database: demo_test_test
   pool: 5
-  username: mogh
+  username: anuradhasrikanth
   password:
   timeout: 5000
 
@@ -85,6 +85,6 @@ production:
   encoding: unicode
   database: demo_test_test
   pool: 5
-  username: mogh
+  username: anuradhasrikanth
   password:
   timeout: 5000

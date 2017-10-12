@@ -9,13 +9,20 @@
   <%= favicon_link_tag 'favicon.png' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%#= javascript_include_tag :jquery %>
+  <%#= javascript_include_tag :jquery-ui %>
+
+
   <%= csrf_meta_tags %>
   <!--  -->
-
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,800,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/set1.css" />
 
 </head>
+
 <body>
  <%= render 'partials/navigation' %>
+            
  <div id="main">
    
     <%= yield %>

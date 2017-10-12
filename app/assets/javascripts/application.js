@@ -11,14 +11,21 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.all
+
 //= require jquery_ujs
 //= require jquery_nested_form
+
 
 //= require materialize-sprockets
 //= require_tree .
 
+//= require filterrific/filterrific-jquery
+
 $( document ).ready(function(){
-	$(".button-collapse").sideNav();
+	// $(".button-collapse").sideNav();
 	$('select').material_select();
+    $('.button-collapse').sideNav({
+        closeOnClick: true
+    });
 });
+

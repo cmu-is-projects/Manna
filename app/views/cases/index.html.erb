@@ -3,44 +3,48 @@
 
 <div class="card">
   <% if !@cases.empty? %>
-    <h2>Listing Cases</h2>
+  <h2>Listing Cases</h2>
+  <ul class="collection">
 
-    <table class = "striped responsive-table centered">
-      <thead>
-
-        <tr>
-          <th>Subject</th>
-          <th>Client Name</th>
-          <th>Assigned Deacon</th>
-          <th>Status</th>
-          <th>Date submitted</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for c in @cases %>
-          <tr>
-            <td><%= link_to "#{c.subject}", c %></td>
-            <td><%= c.client_name %></td>
-            <td><%= c.deacon.proper_name %></td>
-            <td><%= c.status_display.capitalize %></td>
-            <td><%= c.date_submitted.to_formatted_s(:rfc822) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @cases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
-
-  <% else %>
-    <p>No cases in the system.</p>
-  <% end %>
+    <% for c in @cases %>
+    <li class="collection-item avatar">
+      <div class = "row">
+        <div class = "col l6 s6">
+          <i class="material-icons circle"> </i>
+          <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
+          <span class="title"> <%= link_to "#{c.subject}", c %></span>
+          <p> <%= c.client_name %> <br>
+                  </div>
+        <div class = "col l2 s6">
+           <%= User.find(c.deacon_id).proper_name %> <br> </div>
+           <div class = "col l2 s6">
+           <%= c.status_display.capitalize %> <br> </div>
+           <div class = "col l2 s6">
+           <%= c.date_submitted.to_formatted_s(:rfc822) %> </div>
+         </p>
+       </div>
+       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     </li>
+     <%end%>
+   </ul>
+   <% else %>
+   <p>No cases in the system.</p>
+   <% end %>
 
 
-  <br>
-  <br>
-  <br>
-  <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
-  <% else %>
-    <p>please log in</p>
 
-  <% end %>
-</div>
+   <br>
+   <br>
+   <br>
+   <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
+   <% else %>
+   <p>please log in</p>
+
+   <% end %>
+ </div>
+
+
+
+ <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+</li>
+</ul>
