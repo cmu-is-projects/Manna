@@ -12,8 +12,6 @@ html {
     
     font-family: "Lato", sans-serif;
 
-
-
     body {
         /*position: fixed;*/
         background-color: #eee;
@@ -108,10 +106,27 @@ html {
 
         .card-panel{
             /*color: red;*/
-            background-color: rgba(255,255,255,0.0);
+           /* background-color: rgba(255,255,255,0.0); */
            /*border-radius: 10px;*/
             padding: 0%;
+
         }
+
+        .y{
+                background-color: #F4B153 !important;
+            }
+
+            .g{
+                background-color: #A2963F !important;
+            }
+
+            .o{
+                background-color: #CF5F28 !important;
+            }
+
+            .b{
+                background-color: #68473F !important;
+            }
 
         .big{
             /*color: red;*/
@@ -190,6 +205,8 @@ html {
         .card-content{
         margin: 0px auto;
         }
+
+
 
 
         footer {

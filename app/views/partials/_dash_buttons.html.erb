@@ -1,33 +1,37 @@
 <div class="row">
   <div class="col s6 m3 l3">
-    <div class="card-panel teal">
-      <span class="white-text"> Number of Cases: 
+    <div class="card-panel y">
+      <span class="white-text">  <h4> <%= all.count %> </h4> Total cases 
       </span>
-      <p> <%= all.count %> </p> 
+
   </div>
 </div>
 
 <div class="col s6 m3 l3">
-    <div class="card-panel teal">
-      <span class="white-text"> Cases need Vote: 
+    <div class="card-panel g">
+      <span class="white-text"> 
+      <h4><%= vote.count %> </h4>
+      Cases need votes
       </span> 
-      <p><%= vote.count %> </p>
+    
   </div>
 </div>
 
 <div class="col s6 m3 l3">
-    <div class="card-panel teal">
-      <span class="white-text"> Approved Cases:
+    <div class="card-panel o">
+      <span class="white-text"> <h4> <%= all.approved.count %> </h4>
+       Approved Cases
       </span> 
-      <p> <%= all.approved.count %> </p>
+      
   </div>
 </div>
 
 <div class="col s6 m3 l3">
-    <div class="card-panel teal">
-      <span class="white-text"> Rejected Cases:
+    <div class="card-panel b">
+      <span class="white-text"> 
+       <h4> <%= all.rejected.count %> </h4>Rejected Cases:
       </span> 
-      <p> <%= all.rejected.count %> </p>
+     
   </div>
 </div>
 
