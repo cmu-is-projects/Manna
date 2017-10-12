@@ -140,6 +140,7 @@ html {
             background-color: rgba(255,255,255,0.0);
             display: flex;
             align-items: center;
+            color: black;
         }
 
 
@@ -176,8 +177,19 @@ html {
         }
 
         .needs-vote {
-            background-color: light-gray;
+            background-color: red;
         }
+
+        .name{
+            width:100%;
+            margin: 0px auto;
+            font-size: 1.5em;
+        }
+
+        .card-content{
+        margin: 0px auto;
+        }
+
 
         footer {
             /*position: fixed;*/
