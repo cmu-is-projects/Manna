@@ -23,6 +23,8 @@ class CasesController < ApplicationController
         end
       end
 
+      @cases_need_voting = Case.not_voted_by_deacon(current_user)
+  
     else
       redirect_to home_path
     end
