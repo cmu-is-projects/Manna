@@ -22,6 +22,10 @@
 //= require filterrific/filterrific-jquery
 
 $( document ).ready(function(){
-	$(".button-collapse").sideNav();
+	// $(".button-collapse").sideNav();
 	$('select').material_select();
+    $('.button-collapse').sideNav({
+        closeOnClick: true
+    });
 });
+

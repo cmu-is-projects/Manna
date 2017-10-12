@@ -1,22 +1,10 @@
 
-<script>
-(function($){
-  $(function(){
-
-    $('.button-collapse').sideNav();
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
-</script>
-
 <div class="navbar-fixed">
 <nav class="nav">
 
   <div class="nav-wrapper" id="nav-2">
     <%= link_to 'MANNA', home_path, class: "brand-logo" %>
-     <a href="#" data-activates="mobile-demo" class="button-collapse">
-     <i class="material-icons">menu</i>
-     </a>
+     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
 
@@ -34,6 +22,9 @@
             <% end %>
         </li>
       </ul>
+
+
+
   </div>
 
 <%= form_tag(cases_path, :method => "get", id: "search-form") do %>
@@ -51,8 +42,6 @@
   </div>
 
 <% end %>
-</nav>
-</div>
 
 <!-- MOBILE NAV LINKS -->
 <ul id="mobile-demo" class="side-nav">
@@ -80,8 +69,8 @@
   Welcome, <%#= @current_user.nil? ? "Guest" : @current_user.proper_name %>!
 </div> -->
 
-<!-- 
+
 
 </nav>
 </div>
- -->
+
