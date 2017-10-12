@@ -7,31 +7,13 @@
   <ul class="collection">
 
     <% for c in @cases %>
-    <li class="collection-item avatar">
-      <div class = "row">
-        <div class = "col l6 s6">
-          <i class="material-icons circle"> </i>
-          <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
-          <span class="title"> <%= link_to "#{c.subject}", c %></span>
-          <p> <%= c.client_name %> <br>
-                  </div>
-        <div class = "col l2 s6">
-           <%= User.find(c.deacon_id).proper_name %> <br> </div>
-           <div class = "col l2 s6">
-           <%= c.status_display.capitalize %> <br> </div>
-           <div class = "col l2 s6">
-           <%= c.date_submitted.to_formatted_s(:rfc822) %> </div>
-         </p>
-       </div>
-       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-     </li>
+      <%= render partial: "partials/case_table_row", locals: {c: c, vote: @cases_need_voting} %>
      <%end%>
+
    </ul>
    <% else %>
    <p>No cases in the system.</p>
    <% end %>
-
-
 
    <br>
    <br>
@@ -43,8 +25,5 @@
    <% end %>
  </div>
 
-
-
- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 </li>
 </ul>

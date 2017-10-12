@@ -1,0 +1,22 @@
+    <li class="collection-item avatar">
+      <div class = "row">
+        <div class = "col l6 s6">
+        <% if !vote.nil? && vote.include?(c) %>
+          <i class="material-icons circle needs-vote"> </i>
+          <%else%>
+          <i class="material-icons circle"> </i>
+          <%end %>
+          <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
+          <span class="title"> <%= link_to "#{c.subject}", c %></span>
+          <p> <%= c.client_name %> <br>
+                  </div>
+        <div class = "col l2 s6">
+           <%= User.find(c.deacon_id).proper_name %> <br> </div>
+           <div class = "col l2 s6">
+           <%= c.status_display.capitalize %> <br> </div>
+           <div class = "col l2 s6">
+           <%= c.date_submitted.to_formatted_s(:rfc822) %> </div>
+         </p>
+       </div>
+       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     </li>
