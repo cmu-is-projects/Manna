@@ -4,7 +4,7 @@
 <br>
 <br>
 
-        <%#= render "case_display" %>
+        <%= render "case_display" %>
 
 <script src="https://use.typekit.net/bkt6ydm.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -17,10 +17,10 @@
         </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
             <ul class="timeline timeline-centered">
-            <%= render partial: "partials/timeline_item"%>
-            <%= render partial: "partials/timeline_item"%>
+            <%#= render partial: "partials/timeline_item"%>
+            <%#= render partial: "partials/timeline_item"%>
               <% for c in @all_cases %>
-                <%= render partial: "partials/timeline_item"%>
+                <%= render partial: "partials/timeline_item", locals: {c: c}%>
               <% end %>
             </ul>
         </div>
