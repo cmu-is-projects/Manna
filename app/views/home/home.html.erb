@@ -7,7 +7,6 @@
         <%= render "case_display" %>
 
         <%= render partial: "partials/timeline", locals: {all_cases: @all_cases}%>
-      <!-- </div> -->
 
 
       <% if current_user.role? :care_deacon %>

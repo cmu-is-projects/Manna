@@ -2,9 +2,26 @@
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 <div class="container-fluid">
+    <% yr = Time.now.year %>
     <% (1..12).each do |mon| %>
-        <% for c in Case.cases_in_month()
-    <% for c in all_cases %>
+    <% @cases = Case.cases_in_month(mon, yr) %>
+    <% unless @cases.nil? || @cases.empty? %>
 
+    <li class="timeline-item period">
+        <div class="timeline-info"></div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+            <h2 class="timeline-title">
+                <%= @cases.first.date_submitted.strftime("%B") %> 
+                <%= @cases.first.date_submitted.strftime("%Y") %>
+            </h2>
+        </div>
+    </li>
+    <%# for list in Case.cases_in_month(mon, yr) %>
+    <%# for c in list %>
+    <%= render partial: "partials/timeline_month", locals: {all_cases: Case.cases_in_month(mon, yr)}%>
+    <%# end %>
+    <% else %>
+    <% end %>
     <%end%>
 </div>
