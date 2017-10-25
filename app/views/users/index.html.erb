@@ -2,19 +2,28 @@
    <br>
    <% if !@active_users.empty? %>
    <h1>Deacons+Staff</h1>
-
+   <!-- <i class="fa fa-pencil" aria-hidden="true">  -->
   <div class="row">
       <% @active_users.each do |user| %>
       <div class="col s12 m4 l3">
    <div class="card">
     <div class="card-content name">
     <%if current_user.role? :admin%>
-              <%= link_to user.proper_name, edit_user_path(user)  %>
-            <% else %>
-              <%= user.proper_name %>
-            <% end %>
-  
+        <%= link_to user.proper_name, edit_user_path(user)  %>
+    <% else %>
+        <%= user.proper_name %>
+    <% end %>
+      <!-- fa_icon "pencil" -->
+      <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+     <%# end %>
     </div>
+    <%#= link_to edit_user_path(user), class: "fa fa-user-plus" %>
+    <%#= link_to edit_user_path(user) do %>
+      <!-- <i class="fa fa-pencil" aria-hidden="true"> -->
+        <!-- Edit -->
+      <!-- </i> -->
+    <%# end %>
+    <%#= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>', edit_user_path(user)%>
     <!-- "#{c.subject}" -->
     <div class="card-content grey lighten-4">
       <div ><%= mail_to user.email %></div>
@@ -30,3 +39,6 @@
   <p>Nothing to show.</p>
   <% end %>
 
+
+
+<i class="fa fa-pencil" aria-hidden="true"></i>

@@ -1,6 +1,9 @@
 include TwilioConnection
 include PgSearch
 class Case < ActiveRecord::Base
+
+  # @@total_approved = 0
+
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   before_create :set_date
   after_create :send_submitted_sms
@@ -102,6 +105,17 @@ class Case < ActiveRecord::Base
   def self.not_voted_by_deacon(user)
     cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)
     cases.sort_by!{|c| c.date_submitted}.reverse unless cases.empty?
+  end
+
+  def self.total_amt_approved()
+    total_amt = 0
+    for c in Case.approved do
+      total_amt += c.amount_approved
+    end
+    return total_amt
+      
+    # cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)
+    # cases.sort_by!{|c| c.date_submitted}.reverse unless cases.empty?
   end
 
   #methods

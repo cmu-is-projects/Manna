@@ -5,6 +5,7 @@ $secondary-color: color("brown", "darken-2") !default;
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "https://fonts.googleapis.com/css?family=Lato|Lora|Montserrat|Effra|Helvetica";
 @import "include-media";
+@import "font-awesome";
 
 html {
 
@@ -23,7 +24,9 @@ html {
             text-align: center;
         }
 
-        
+        .cname{
+            text-align: center;
+        }
 
         #main {
             /*position: fixed;*/
