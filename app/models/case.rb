@@ -22,6 +22,7 @@ class Case < ActiveRecord::Base
 
   #scopes
   scope :chronological,       -> { order('date_submitted DESC') }
+  scope :cases_in_month,      -> (mon,yr) { where((date_submitted + 1.month).month = mon and (date_submitted + 1.month).year = yr)} 
   scope :client_alphabetical, -> { order(:client_name)}
 
   scope :submitted,           -> { where(status: "submitted")}
