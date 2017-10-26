@@ -3,25 +3,24 @@ $primary-color: color("deep-orange", "lighten-1") !default;
 $secondary-color: color("brown", "darken-2") !default;
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "https://fonts.googleapis.com/css?family=Lato|Lora|Montserrat|Effra|Helvetica";
+@import "https://fonts.googleapis.com/css?family=Lato|Lora|Montserrat|Helvetica";
 @import "include-media";
 @import "font-awesome";
 
 html {
 
-    /*font-family: GillSans;*/
-    
-    /*font-family: "Lato", sans-serif;*/
     font-family: "Effra", Helvetica, sans-serif;
 
     body {
-        /*position: fixed;*/
-        background-color: #eee;
         width: 100%;
         box-sizing: content-box;
+        color: #768390;
+        background: #fff;
 
-        h1,h2,h3 {
+        h1,h2,h3,h4,h5,h6 {
             text-align: center;
+            color: #3D4351;
+            margin-top: 0;
         }
 
         .cname{
@@ -211,7 +210,13 @@ html {
         }
 
 
+        /***** Dash buttons *******/
 
+        .dash_buttons h4{
+            color: white;
+        }
+
+        /**************************/
 
         footer {
             /*position: fixed;*/
@@ -226,7 +231,7 @@ html {
         @font-face {
     font-weight: normal;
     font-style: normal;
-    font-family: 'feathericons';
+    /*font-family: 'feathericons';*/
     src:url('../fonts/feathericons/feathericons.eot?-8is7zf');
     src:url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
         url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
@@ -234,27 +239,17 @@ html {
         url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
 }
 
+
+/*************************************************************************/
+/*********                   Timeline specific styles               ******/
+/*************************************************************************/
+
 $primary-color: #FF6B6B;
+$submitted-color: black;
+$rejected-color: orange;
+$approved-color: green;
 $primary-color-hover: scale-color($primary-color, $lightness: 32%);
 
-body {
-    color: #768390;
-    background: #FFF;
-    font-family: "Effra", Helvetica, sans-serif;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-}
-h1,h2,h3,h4,h5,h6 {
-    color: #3D4351;
-    margin-top: 0;
-}
-/*a {
-    color: $primary-color;
-    &:hover {
-        color: $primary-color-hover;
-        text-decoration: none;
-    }
-}*/
 
 .container-fluid {
     width: 90%;
@@ -317,7 +312,12 @@ h1,h2,h3,h4,h5,h6 {
         text-transform: uppercase;
         white-space: nowrap;
     }
+
     /*----- TIMELINE MARKER -----*/
+
+    /************ BAD STYLE CODE ***************/
+
+    /************ SUBMITTED ***************/
 
     .timeline-marker {
         position: absolute;
@@ -325,7 +325,7 @@ h1,h2,h3,h4,h5,h6 {
         width: 15px;
         &:before {
             background: $primary-color;
-            border: 3px solid transparent;
+            /*border: 2px solid transparent;*/
             border-radius: 100%;
             content: "";
             display: block;
@@ -333,6 +333,7 @@ h1,h2,h3,h4,h5,h6 {
             position: absolute;
             top: 4px; left: 0;
             width: 15px;
+            /*15px;*/
             transition: background 0.3s ease-in-out,
                     border 0.3s ease-in-out;
         }
@@ -348,10 +349,76 @@ h1,h2,h3,h4,h5,h6 {
             content: none;
         }
     }
-    .timeline-item:not(.period):hover .timeline-marker:before {
-        background: transparent;
-        border: 3px solid $primary-color;
+
+     /************ APPROVED ***************/
+
+    .timeline-marker-approved {
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 15px;
+        &:before {
+            background: $approved-color;
+            /*border: 2px solid transparent;*/
+            border-radius: 100%;
+            content: "";
+            display: block;
+            height: 15px;
+            position: absolute;
+            top: 4px; left: 0;
+            width: 15px;
+            /*15px;*/
+            transition: background 0.3s ease-in-out,
+                    border 0.3s ease-in-out;
+        }
+        &:after {
+            content: "";
+            width: 3px;
+            background: #CCD5DB;
+            display: block;
+            position: absolute;
+            top: 24px; bottom: 0; left: 6px;
+        }
+        .timeline-item:last-child &:after {
+            content: none;
+        }
     }
+
+     /************ REJECTED ***************/
+
+    .timeline-marker-rejected {
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 15px;
+        &:before {
+            background: $rejected-color;
+            /*border: 2px solid transparent;*/
+            border-radius: 100%;
+            content: "";
+            display: block;
+            height: 15px;
+            position: absolute;
+            top: 4px; left: 0;
+            width: 15px;
+            /*15px;*/
+            transition: background 0.3s ease-in-out,
+                    border 0.3s ease-in-out;
+        }
+        &:after {
+            content: "";
+            width: 3px;
+            background: #CCD5DB;
+            display: block;
+            position: absolute;
+            top: 24px; bottom: 0; left: 6px;
+        }
+        .timeline-item:last-child &:after {
+            content: none;
+        }
+    }
+    /*.timeline-item:not(.period):hover .timeline-marker:before {
+        background: transparent;
+        border: 2px solid $primary-color;
+    }*/
 
     /*----- TIMELINE CONTENT -----*/
 

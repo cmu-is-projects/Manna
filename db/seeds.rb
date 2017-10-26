@@ -16,7 +16,7 @@ User.create(first_name: 'Kane', last_name: 'Manage', email: 'staff@gmail.com', p
   Case.create({
     client_name: Faker::Name.name,
     client_first_name: Faker::Name.name,
-    date_submitted: Faker::Date.between(1.year.ago, Date.today),
+    date_submitted: Faker::Date.between(1.year.ago, Date.current),
     summary: Faker::Lorem.paragraph(7),
     notes: Faker::Lorem.sentence(3),
     recommendation: Faker::Lorem.sentence(1),

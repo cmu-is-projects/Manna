@@ -5,6 +5,7 @@ class Case < ActiveRecord::Base
   # @@total_approved = 0
 
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
+  # commenting this out for testing purpose, enable after testing
   before_create :set_date
   after_create :send_submitted_sms
   after_update :send_update_sms

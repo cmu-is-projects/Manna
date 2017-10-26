@@ -1,14 +1,15 @@
    <br>
    <br>
    <% if !@active_users.empty? %>
-   <h1>Deacons+Staff</h1>
+   <h1>Deacons and Staff</h1>
    <!-- <i class="fa fa-pencil" aria-hidden="true">  -->
+   
   <div class="row">
       <% @active_users.each do |user| %>
       <div class="col s12 m4 l3">
    <div class="card">
     <div class="card-content name">
-    <%if current_user.role? :admin%>
+    <%if current_user.role? :admin || current_user.id == user.id%>
         <%= link_to user.proper_name, edit_user_path(user)  %>
     <% else %>
         <%= user.proper_name %>
@@ -30,6 +31,7 @@
       <div id="test5"><%= user.phone.nil? ? "N/A" : (user.phone.insert(0, '(').insert(4, ') ').insert(-5, '-')) %></div>
       <div id="test6">    <%= user.role_display.capitalize %></div>
     </div>
+    <i class="material-icons">edit</i>
   </div>
   </div>
 <%end%>
