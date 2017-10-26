@@ -22,6 +22,7 @@
         </h3>
 
         <p class="cname"> <%= c.client_name %> </p>
+        <p class="cname"> <%= c.status.titleize %> </p>
         <!-- <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis eu pede mollis pretium. Pellentesque ut neque.</p> -->
         <p> <%=h truncate(c.summary, :length => 350)%> 
         <%= link_to "See More", case_path(c) %> </p>
