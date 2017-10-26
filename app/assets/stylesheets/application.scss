@@ -7,6 +7,10 @@ $secondary-color: color("brown", "darken-2") !default;
 @import "include-media";
 @import "font-awesome";
 
+.material-icons{
+    font-size: 18px;
+}
+
 html {
 
     font-family: "Effra", Helvetica, sans-serif;
@@ -206,7 +210,7 @@ html {
         }
 
         .card-content{
-        margin: 0px auto;
+            margin: 0px auto;
         }
 
 
@@ -217,6 +221,10 @@ html {
         }
 
         /**************************/
+
+        .icon-align i{
+            text-align: right;
+        }
 
         footer {
             /*position: fixed;*/
