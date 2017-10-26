@@ -1,7 +1,15 @@
    <br>
    <br>
    <% if !@active_users.empty? %>
-   <h1>Deacons and Staff</h1>
+   <span>
+   <h1> Deacons and Staff 
+   <%# if current_user.role? :admin %>
+    <%= link_to new_user_path do %>
+      <i class="material-icons">add</i> 
+    <% end %>
+    <%# end %>
+    </h1>
+    </span>
   <div class="row">
       <% @active_users.each do |user| %>
       <%= render partial: "user_card", locals: {user: user}%>

@@ -27,3 +27,19 @@ User.create(first_name: 'Kane', last_name: 'Manage', email: 'staff@gmail.com', p
     amount_approved: Faker::Commerce.price
     })
 end
+
+3.times do
+  Case.create({
+    client_name: Faker::Name.name,
+    client_first_name: Faker::Name.name,
+    date_submitted: Faker::Date.between(1.year.ago, Date.current),
+    summary: Faker::Lorem.paragraph(7),
+    notes: Faker::Lorem.sentence(3),
+    recommendation: Faker::Lorem.sentence(1),
+    status: "approved",
+    deacon_id: 2,
+    subject: Faker::Lorem.sentence(1),
+    amount_requested: Faker::Commerce.price,
+    amount_approved: Faker::Commerce.price
+    })
+end

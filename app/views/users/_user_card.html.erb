@@ -1,36 +1,21 @@
 <div class="col s12 m4 l3">
-   <div class="card">
-    <div class="card-content name">
-    <%#if current_user.role? :admin || current_user.id == user.id%>
-        <%#= link_to user.proper_name, edit_user_path(user)  %>
-    <%# else %>
-        <%= user.proper_name %>
-    <%# end %>
-      <% if current_user.role? :admin or current_user.email == user.email %>
-      <!-- <div class="icon-align"> -->
-      <%= link_to edit_user_path(user) do %>
-        <i class="material-icons">edit</i>
-      <% end %>
-      <!-- </div> -->
+ <div class="card">
+  <div class="card-content name">
+    <%= user.proper_name %>
+    <% if current_user.role? :admin or current_user.email == user.email %>
+    <%= link_to edit_user_path(user) do %>
+    <i class="material-icons">edit</i>
     <% end %>
-      <!-- fa_icon "pencil" -->
-      <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
-     <%# end %>
-    </div>
-    <%#= link_to edit_user_path(user), class: "fa fa-user-plus" %>
-    <%#= link_to edit_user_path(user) do %>
-      <!-- <i class="fa fa-pencil" aria-hidden="true"> -->
-        <!-- Edit -->
-      <!-- </i> -->
-    <%# end %>
-    <%#= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>', edit_user_path(user)%>
-    <!-- "#{c.subject}" -->
-    <div class="card-content grey lighten-4">
-      <div ><%= mail_to user.email %></div>
-      <div id="test5"><%= user.phone.nil? ? "N/A" : (user.phone.insert(0, '(').insert(4, ') ').insert(-5, '-')) %></div>
-      <div id="test6">    <%= user.role_display.capitalize %></div>
-    </div>
-
-
+    <% end %>
   </div>
+  <div class="card-content grey lighten-4">
+    <div ><%= mail_to user.email %></div>
+    <div id="test5">
+      <%= user.phone.nil? ? "N/A" : (user.phone.insert(0, '(').insert(4, ') ').insert(-5, '-')) %>
+    </div>
+    <div id="test6">    
+      <%= user.role_display.capitalize %>
+    </div>
   </div>
+</div>
+</div>

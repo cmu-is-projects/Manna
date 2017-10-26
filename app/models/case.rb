@@ -16,7 +16,7 @@ class Case < ActiveRecord::Base
   has_many :case_attachments
   has_many :attachments, through: :case_attachments
 
-  validates_presence_of :client_name, :summary, :subject
+  validates_presence_of :client_name, :summary, :subject, :amount_requested
   validates_inclusion_of :status, in: $STATUSES, message: "is not an option"
   accepts_nested_attributes_for :attachments, reject_if: lambda { |attachment| attachment[:name].blank? }, allow_destroy: true
 

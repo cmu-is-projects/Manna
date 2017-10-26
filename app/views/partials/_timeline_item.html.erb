@@ -7,13 +7,14 @@
     </div>
     <!-- @TODO -->
     <!-- If it's not the last iteration, have the marker -->
-    <% if c.status == "submitted" %>
+    <!-- How to change pseudo element for different statuses -->
+    <%# if c.status == "submitted" %>
         <div class="timeline-marker"></div>
-    <% elsif c.status == "approved" %>
-        <div class="timeline-marker-approved"></div>
-    <% elsif c.status == "rejected" %>
-        <div class="timeline-marker-rejected"></div>
-    <% end %>
+    <%# elsif c.status == "approved" %>
+        <!-- <div class="timeline-marker-approved"></div> -->
+    <%# elsif c.status == "rejected" %>
+        <!-- <div class="timeline-marker-rejected"></div> -->
+    <%# end %>
 
     <div class="timeline-content">
         <h3 class="timeline-title"> 
