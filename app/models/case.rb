@@ -26,19 +26,19 @@ class Case < ActiveRecord::Base
   scope :cases_in_month,      -> (mon,yr){where('EXTRACT(MONTH FROM date_submitted) = ? AND EXTRACT(YEAR FROM date_submitted) = ?',mon, yr)}
   # scope :cases_in_month,      -> (mon,yr) { where("(date_submitted + 1.month).month = ? AND (date_submitted + 1.month).year = ?", mon, yr)} 
   scope :client_alphabetical, -> { order(:client_name)}
-
+  scope :earliest_date,       -> { order('date_submitted ASC').limit(1) }
+  
   scope :submitted,           -> { where(status: "submitted")}
   scope :approved,            -> { where(status: "approved")}
   scope :rejected,            -> { where(status: "rejected")}
   scope :check_processed,     -> { where(status: "check_processed")}
   scope :check_signed,        -> { where(status: "check_signed")}
-
   scope :for_deacon,          -> (user_id) {where(deacon_id: user_id) }
   scope :for_client,          -> (client_name) {where("client_name LIKE ?", client_name + "%")}
   scope :by_client_name,      -> { order("client_name ASC") }
 
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
-  scope :needs_vote, -> (user_id) {joins(:votes).where('votes.deacon_id is NULL')}
+  scope :needs_vote,          -> (user_id) {joins(:votes).where('votes.deacon_id is NULL')}
 
   # scope :search_query, lambda { |query|
   #   return nil  if query.blank?
