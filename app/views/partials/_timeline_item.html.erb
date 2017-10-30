@@ -26,7 +26,7 @@
         <!-- <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis eu pede mollis pretium. Pellentesque ut neque.</p> -->
         <p> <%=h truncate(c.summary, :length => 350)%> 
         <%= link_to "See More", case_path(c) %> </p>
-        <p> Amount requested: <%= c.amount_requested %> </p>
-        <p> Amount approved: <%= c.amount_approved %> </p>
+        <p> Amount requested: <%= number_to_currency(c.amount_requested) %> </p>
+        <p> Amount approved: <%= number_to_currency(c.amount_approved) %> </p>
     </div>
 </li>

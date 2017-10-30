@@ -1,9 +1,5 @@
 <% if logged_in? %>
 
-<br>
-<br>
-<br>
-
 <%= render "case_display" %>
 
 <%= render partial: "partials/timeline", locals: {all_cases: @all_cases}%>
