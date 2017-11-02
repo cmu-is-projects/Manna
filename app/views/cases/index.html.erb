@@ -1,10 +1,14 @@
+<%= render partial: "partials/case_search"%>
+
 <% if logged_in? %>
 <!-- <p id="notice"><%= notice %></p> -->
 
 <!-- <div class="card"> -->
   <% if !@cases.empty? %>
   <h2>Listing Cases</h2>
+  <div class="center">
      <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
+     </div>
   <!-- <ul class="collection"> -->
 
     <%# for c in @cases %>

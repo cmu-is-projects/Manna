@@ -6,6 +6,7 @@ $secondary-color: color("brown", "darken-2") !default;
 @import "https://fonts.googleapis.com/css?family=Lato|Lora|Montserrat|Helvetica";
 @import "include-media";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Arvo');
 
 .material-icons{
     font-size: 18px;
@@ -25,6 +26,7 @@ html {
             text-align: center;
             color: #3D4351;
             margin-top: 0;
+            font-family: 'Arvo', serif;
         }
 
         .cname{
@@ -236,6 +238,13 @@ html {
 
         }
 
+        .btn.orange.lighten-2{
+            /*background-color: #fff;*/
+            width: 120px;
+            margin: 0 auto;
+            position: relative;
+        }
+
         @font-face {
     font-weight: normal;
     font-style: normal;
@@ -246,6 +255,7 @@ html {
         url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
         url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
 }
+
 
 
 /*************************************************************************/
