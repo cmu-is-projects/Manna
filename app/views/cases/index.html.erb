@@ -1,29 +1,29 @@
 <% if logged_in? %>
 <!-- <p id="notice"><%= notice %></p> -->
 
-<div class="card">
+<!-- <div class="card"> -->
   <% if !@cases.empty? %>
   <h2>Listing Cases</h2>
-  <ul class="collection">
+     <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
+  <!-- <ul class="collection"> -->
 
-    <% for c in @cases %>
-      <%= render partial: "partials/case_table_row", locals: {c: c, vote: @cases_need_voting} %>
-     <%end%>
+    <%# for c in @cases %>
+      <%#= render partial: "partials/case_table_row", locals: {c: c, vote: @cases_need_voting} %>
 
-   </ul>
+    <%= render partial: "partials/timeline", locals: {all_cases: @cases}%>
+
+     <%#end%>
+
+   <!-- </ul> -->
    <% else %>
    <p>No cases in the system.</p>
    <% end %>
 
-   <br>
-   <br>
-   <br>
-   <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
    <% else %>
    <p>please log in</p>
 
    <% end %>
- </div>
+ <!-- </div> -->
 
 </li>
 </ul>

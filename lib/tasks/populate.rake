@@ -20,7 +20,7 @@ namespace :db do
 	    admin.email = 'admin@gmail.com'
 	   	admin.password = 'manna'
 	   	admin.password_confirmation = 'manna'
-	   	admin.phone = '4124788458'
+	   	admin.phone = '9999999999'
 	   	admin.role = 'admin'
 	   	admin.active = true
 	   	admin.save!
@@ -31,7 +31,7 @@ namespace :db do
 	    staff.email = 'staff@gmail.com'
 	   	staff.password = 'manna'
 	   	staff.password_confirmation = 'manna'
-	   	staff.phone = '4124788458'
+	   	staff.phone = '9999999999'
 	   	staff.role = 'staff'
 	   	staff.active = true
 	   	staff.save!
@@ -42,7 +42,7 @@ namespace :db do
 	    head.email = 'head_deacon@gmail.com'
 	   	head.password = 'manna'
 	   	head.password_confirmation = 'manna'
-	   	head.phone = '4124788458'
+	   	head.phone = '9999999999'
 	   	head.role = 'head_deacon'
 	   	head.active = true
 	   	head.save!
@@ -53,7 +53,7 @@ namespace :db do
 	    care.email = 'care_deacon@gmail.com'
 	   	care.password = 'manna'
 	   	care.password_confirmation = 'manna'
-	   	care.phone = '4124788458'
+	   	care.phone = '9999999999'
 	   	care.role = 'care_deacon'
 	   	care.active = true   	
 	   	care.save!
@@ -64,7 +64,7 @@ namespace :db do
 	    finance.email = 'financial_deacon@gmail.com'
 	   	finance.password = 'manna'
 	   	finance.password_confirmation = 'manna'
-	   	finance.phone = '4124788458'
+	   	finance.phone = '9999999999'
 	   	finance.role = 'financial_deacon'
 	   	finance.active = true 
 	   	finance.save!
@@ -75,7 +75,7 @@ namespace :db do
 	    care2.email = 'ally@gmail.com'
 	   	care2.password = 'manna'
 	   	care2.password_confirmation = 'manna'
-	   	care2.phone = '4124788458'
+	   	care2.phone = '9999999999'
 	   	care2.role = 'care_deacon'
 	   	care2.active = true
 	   	care2.save!
@@ -86,7 +86,7 @@ namespace :db do
 	    care3.email = 'sina@gmail.com'
 	   	care3.password = 'manna'
 	   	care3.password_confirmation = 'manna'
-	   	care3.phone = '4124788458'
+	   	care3.phone = '9999999999'
 	   	care3.role = 'care_deacon'
 	   	care3.active = false    
 	   	care3.save!

@@ -1,47 +1,22 @@
 <% if logged_in? %>
 
-<br>
-<br>
-<br>
+<%= render "case_display" %>
 
-        <%= render "case_display" %>
+<%= render partial: "partials/timeline", locals: {all_cases: @all_cases}%>
 
-<script src="https://use.typekit.net/bkt6ydm.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
-
-<div class="container-fluid">
-    <div class="row example-centered">
-        <div class="col-md-12 example-title">
-            <h2>Centered Timeline</h2>
-            <p>Medium devices (desktops, 992px and up).</p>
-        </div>
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-            <ul class="timeline timeline-centered">
-            <%= render partial: "partials/timeline_item"%>
-            <%= render partial: "partials/timeline_item"%>
-              <% for c in @all_cases %>
-                <%= render partial: "partials/timeline_item"%>
-              <% end %>
-            </ul>
-        </div>
-    </div>
+<% if current_user.role? :care_deacon %>
+<%#= render "care_deacon" %>
+<% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
+<%#= render "head_deacon" %>
+<% elsif current_user.role? :financial_deacon %>
+<%#= render "financial_deacon" %>
+<% elsif current_user.role? :staff %>
+<%#= render "staff" %>
+<% end %>
 </div>
-      <!-- </div> -->
 
 
-      <% if current_user.role? :care_deacon %>
-      <%#= render "care_deacon" %>
-      <% elsif (current_user.role? :head_deacon) || (current_user.role? :admin) %>
-      <%#= render "head_deacon" %>
-      <% elsif current_user.role? :financial_deacon %>
-      <%#= render "financial_deacon" %>
-      <% elsif current_user.role? :staff %>
-      <%#= render "staff" %>
-      <% end %>
-    </div>
-
-
-    <% end %>
+<% end %>
 
 
 

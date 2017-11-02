@@ -6,6 +6,12 @@ class CasesController < ApplicationController
   # GET /cases
   # GET /cases.json
   def index
+    @years = []
+    @var = Case.earliest_date.to_a[0].date_submitted.year
+    while(@var <= Time.now.year)
+      @years.push(@var)
+      @var += 1
+    end 
     # if logged_in, can only see own if care_d or can see all of them if financial_d
     if logged_in?
 

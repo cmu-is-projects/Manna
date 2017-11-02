@@ -1,28 +1,18 @@
    <br>
    <br>
    <% if !@active_users.empty? %>
-   <h1>Deacons+Staff</h1>
-
+   <span>
+   <h1> Deacons and Staff 
+   <%# if current_user.role? :admin %>
+    <%= link_to new_user_path do %>
+      <i class="material-icons">add</i> 
+    <% end %>
+    <%# end %>
+    </h1>
+    </span>
   <div class="row">
       <% @active_users.each do |user| %>
-      <div class="col s12 m4 l3">
-   <div class="card">
-    <div class="card-content name">
-    <%if current_user.role? :admin%>
-              <%= link_to user.proper_name, edit_user_path(user)  %>
-            <% else %>
-              <%= user.proper_name %>
-            <% end %>
-  
-    </div>
-    <!-- "#{c.subject}" -->
-    <div class="card-content grey lighten-4">
-      <div ><%= mail_to user.email %></div>
-      <div id="test5"><%= user.phone.nil? ? "N/A" : (user.phone.insert(0, '(').insert(4, ') ').insert(-5, '-')) %></div>
-      <div id="test6">    <%= user.role_display.capitalize %></div>
-    </div>
-  </div>
-  </div>
+      <%= render partial: "user_card", locals: {user: user}%>
 <%end%>
 </div>
 
@@ -30,3 +20,6 @@
   <p>Nothing to show.</p>
   <% end %>
 
+
+
+<i class="fa fa-pencil" aria-hidden="true"></i>

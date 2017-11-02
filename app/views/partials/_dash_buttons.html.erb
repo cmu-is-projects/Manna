@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row dash_buttons">
   <div class="col s6 m3 l3">
     <div class="card-panel y">
-      <span class="white-text">  <h4> <%= all.count %> </h4> Total cases 
+      <br>
+      <span class="white-text">  <h5> <%= all.count %> </h5> Cases to date
       </span>
 
   </div>
@@ -9,9 +10,10 @@
 
 <div class="col s6 m3 l3">
     <div class="card-panel g">
+        <br>
       <span class="white-text"> 
-      <h4><%#= vote.count %> </h4>
-      Cases need votes
+      <h5><%= all.approved.count %> </h5>
+      Approved Cases
       </span> 
     
   </div>
@@ -19,8 +21,9 @@
 
 <div class="col s6 m3 l3">
     <div class="card-panel o">
-      <span class="white-text"> <h4> <%= all.approved.count %> </h4>
-       Approved Cases
+      <br>
+      <span class="white-text"> <h5> <%= vote.nil? ? 0 : vote.count %> </h5>
+       Pending Cases
       </span> 
       
   </div>
@@ -28,8 +31,9 @@
 
 <div class="col s6 m3 l3">
     <div class="card-panel b">
+      <br>
       <span class="white-text"> 
-       <h4> <%= all.rejected.count %> </h4>Rejected Cases:
+       <h5> <%= number_to_currency(Case.total_amt_approved()) %> </h5> Amount approved
       </span> 
      
   </div>
