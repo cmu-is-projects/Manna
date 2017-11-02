@@ -4,6 +4,7 @@
 <!-- <div class="card"> -->
   <% if !@cases.empty? %>
   <h2>Listing Cases</h2>
+     <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
   <!-- <ul class="collection"> -->
 
     <%# for c in @cases %>
@@ -18,10 +19,6 @@
    <p>No cases in the system.</p>
    <% end %>
 
-   <br>
-   <br>
-   <br>
-   <%= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
    <% else %>
    <p>please log in</p>
 

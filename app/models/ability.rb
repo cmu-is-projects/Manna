@@ -20,12 +20,15 @@ class Ability
       can :edit, Case do |c|
         c.deacon_id == user.id
       end
+
       can :destroy, Case do |c|
         c.deacon_id == user.id
       end
+
       can :update, Case do |c|
         c.deacon_id == user.id
       end
+      
       can :create, Case
       can :new, Case 
 
