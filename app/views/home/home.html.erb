@@ -1,4 +1,31 @@
 
+<script>
+
+// jQuery.extend(
+//     jQuery.expr[':'], { 
+//         Contains : "jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase())>=0" 
+// });
+jQuery.expr[':'].contains = function(a, i, m) {
+  return jQuery(a).text().toUpperCase()
+      .indexOf(m[3].toUpperCase()) >= 0;
+};
+
+$(document).ready(function(){
+    $(".queue-search").keyup(function(){
+        var query = $(".queue-search").val();
+        $('.timeline-item').hide();
+        // console.log($('.timeline-title:contains('+query+')'));
+        if ($('.timeline-title:contains('+query+')').length > 0){
+            // console.log($('.timeline-title:contains('+query+')').closest('.timeline-item'));
+            $('.timeline-title:contains('+query+')').closest('.timeline-item').show();
+                // ('.timeline-item:contains('+query+')').show();
+        }
+    });
+});
+
+</script>
+
+
 <%= render partial: "partials/case_search"%>
 
 <% if logged_in? %>
