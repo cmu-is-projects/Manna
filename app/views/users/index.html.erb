@@ -10,9 +10,11 @@
     <%# end %>
     </h1>
     </span>
+    <% if current_user.role? :admin %>
         <div class="center">
     <%= link_to '+ NEW USER', new_user_path, class: "btn orange lighten-2" %>
     </div>
+     <% end %>
   <div class="row">
       <% @active_users.each do |user| %>
       <%= render partial: "user_card", locals: {user: user}%>
