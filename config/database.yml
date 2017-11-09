@@ -83,8 +83,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: demo_test_test
+  database: manna
   pool: 5
-  username: anuradhasrikanth
-  password:
+  username: stephen
+  password: was-stoned
   timeout: 5000
