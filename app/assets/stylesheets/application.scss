@@ -3,96 +3,616 @@ $primary-color: color("deep-orange", "lighten-1") !default;
 $secondary-color: color("brown", "darken-2") !default;
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://fonts.googleapis.com/css?family=Lato|Lora|Montserrat|Helvetica";
 @import "include-media";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+
+.material-icons{
+    font-size: 18px;
+}
 
 html {
 
-	font-family: GillSans;
+    font-family: "Effra", Helvetica, sans-serif;
+
+    body {
+        width: 100%;
+        box-sizing: content-box;
+        color: #768390;
+        background: #fff;
+
+        h1,h2,h3,h4,h5,h6 {
+            text-align: center;
+            color: #3D4351;
+            margin-top: 0;
+            font-family: 'Arvo', serif;
+        }
+
+        .cname{
+            text-align: center;
+        }
+
+        #main {
+            /*position: fixed;*/
+            top: 17%;
+            /*width: 70%;*/
+            left: 15%;
+            bottom: 10%;
+            overflow: scroll;
+            /*text-align: center;*/
+
+            @include media(">phone", "<=tablet") {
+                /*width: 90%;*/
+                left: 5%;
+            }
+        }
+
+        
+        #welcome-nav {
+            /*position: relative;*/
+            /*position: fixed;*/
+            top: 0%;
+            height: 5%;
+            width: inherit;
+            text-align: right;
+            padding: 0px;
+            margin: 0px;
+            border: 1px solid #eee;
+            padding-right: 2%;
+
+        }
+
+        #search {
+            /*position: fixed;*/
+            /*position: relative;*/
+            top: 13%;
+            width: inherit;
+            height: 4%;
+
+        }
+
+        nav .brand-logo{
+            font-family: 'Arvo', serif;
+        }
+
+        .lgo{
+            width:50px;
+            height: 70px;
+        }
+
+        nav.nav-extended {
+
+            position: fixed;
+            height: 15%;
+            border-bottom: 1px solid #eee;
+
+    
+
+            #nav-2 {
+                position: relative;
+                top: 8%;
+                height: 10%;
+                width: inherit;
+                border-bottom: 1px solid #eee;
+            }
+
+    
+        }
+
+        .center {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .large-text{
+            font-size: 1.5em;
+        }
+
+        .info{
+            /*padding: 3%;
+            margin: 5%;*/
+        }
+
+        .no-vote{
+            border-top: 10px solid black;
+        } 
 
 
-	body {
-		position: fixed;
-		background-color: #eee;
-		width: 100%;
-		box-sizing: content-box;
+        .no-vote > .small{
+            /*border: 1px solid white;*/
+        }
 
-		h1,h2,h3 {
-			text-align: center;
-		}
+        .card-panel{
+            /*color: red;*/
+           /* background-color: rgba(255,255,255,0.0); */
+           /*border-radius: 10px;*/
+            padding: 0%;
+
+        }
+
+        .y{
+            background-color: #F4B153 !important;
+        }
+
+        .g{
+            background-color: #A2963F !important;
+        }
+
+        .o{
+            background-color: #CF5F28 !important;
+        }
+
+        .b{
+            background-color: #68473F !important;
+        }
+
+        .big{
+            /*color: red;*/
+            background-color: #ffb74d;
+            /*background-color: #87CEFA;*/
+            /*background-color: #F0D4D3;*/
+            /*background-color: #CFE1D3;*/
+            /*background-color: rgba(255,255,255,0.3);*/
+           /* border-radius: 20px;*/
+            padding: 0%;
+            /*width: 200px;*/
+            height: 200px;
+            /*overflow: hidden;*/
+                display: flex;
+            align-items: center;
+            /*box-shadow: none !important;*/
+        }
+
+        .small{
+            width: 90%;
+            height: 90%;
+            margin: 0px auto;
+            overflow: hidden;
+            border: 1px solid #fff;
+            padding: 1.5%;
+            box-shadow: none !important;
+            background-color: rgba(255,255,255,0.0);
+            display: flex;
+            align-items: center;
+            color: black;
+        }
 
 
+        .card {
+            padding: 3%;
+            margin: 5%;
+            text-align: left;
 
-		#main {
-			position: fixed;
-			top: 17%;
-			width: 70%;
-			left: 15%;
-			bottom: 10%;
-			overflow: scroll;
-			text-align: center;
+        }
 
-			@include media(">phone", "<=tablet") {
-				width: 90%;
-				left: 5%;
-			}
-		}
+        .pad{
+            padding: 5px;
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+        }
 
-		
-		#welcome-nav {
-			position: relative;
-			top: 0%;
-			height: 5%;
-			width: inherit;
-			text-align: right;
-			padding: 0px;
-			margin: 0px;
-			border: 1px solid #eee;
-			padding-right: 2%;
+        .h {
+            border-radius: 20px 0px 0px 0px;
+            height: 5em;
+            width: 100%;
+            padding: 0px 0px 0px 0px !important; 
+        }
 
-		}
+        .card-tabs{
+            background-color: gray;
+            border-radius: 20px 0px 0px 20px;
+            padding: 0px 0px 0px 0px !important; 
+        }
 
-		#search {
-			position: relative;
-			top: 13%;
-			width: inherit;
-			height: 4%;
+        .status-vote{
 
-		}
-		nav.nav-extended {
+        background-color: red;
+        }
 
-			position: fixed;
-			height: 15%;
-			border-bottom: 1px solid #eee;
+        .needs-vote {
+            background-color: #ffb74d !important;
+        }
 
-	
+        .name{
+            width:100%;
+            margin: 0px auto;
+            font-size: 1.5em;
+        }
 
-			#nav-2 {
-				position: relative;
-				top: 8%;
-				height: 10%;
-				width: inherit;
-				border-bottom: 1px solid #eee;
-			}
+        .card-content{
+            margin: 0px auto;
+        }
 
-	
-		}
 
-		.card {
-			padding: 3%;
-			margin: 5%;
-			text-align: left;
+        /***** Dash buttons *******/
 
-		}
+        .dash_buttons h5{
+            color: white;
+        }
 
-		footer {
-			position: fixed;
-			bottom: 0px;
-			width: 100%;
-			height: 6%;
-			color: #fff;
-			text-align: center;
+        /**************************/
 
-		}
+        .icon-align i{
+            text-align: right;
+        }
 
-	}
+        footer {
+            /*position: fixed;*/
+            bottom: 0px;
+            width: 100%;
+            height: 6%;
+            color: #fff;
+            text-align: center;
+
+        }
+
+        .btn.orange.lighten-2{
+            /*background-color: #fff;*/
+            width: 120px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @font-face {
+    font-weight: normal;
+    font-style: normal;
+    /*font-family: 'feathericons';*/
+    src:url('../fonts/feathericons/feathericons.eot?-8is7zf');
+    src:url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
+        url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
+        url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
+        url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
 }
+
+
+
+/*************************************************************************/
+/*********                   Timeline specific styles               ******/
+/*************************************************************************/
+
+$primary-color: #FF6B6B;
+$submitted-color: black;
+$rejected-color: orange;
+$approved-color: green;
+$primary-color-hover: scale-color($primary-color, $lightness: 32%);
+
+
+.container-fluid {
+    width: 90%;
+    margin: 0px auto;
+
+    .row {
+        padding: 0 0 4em 0;
+        &:nth-child(even) {
+            background: #F1F4F5;
+        }
+    }
+}
+
+.example-title {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 3em 0;
+    border-bottom: 1px solid #E4EAEC;
+    p {
+        margin: 0 auto;
+        font-size: 16px;
+        max-width: 400px;
+    }
+}
+
+/*==================================
+    TIMELINE
+==================================*/
+
+    /*-- GENERAL STYLES
+    ------------------------------*/
+    .timeline {
+        line-height: 1.4em;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        h1, h2, h3, h4, h5, h6 {
+            /*line-height: inherit;*/
+        }
+    }
+
+    /*----- TIMELINE ITEM -----*/
+
+    .timeline-item {
+        padding-left: 40px;
+        position: relative;
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    /*----- TIMELINE INFO -----*/
+
+    .timeline-info {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        margin: 0 0 .5em 0;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    /*----- TIMELINE MARKER -----*/
+
+    /************ BAD STYLE CODE ***************/
+
+    /************ SUBMITTED ***************/
+
+    .timeline-marker {
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 15px;
+        &:before {
+            background: $primary-color;
+            /*border: 2px solid transparent;*/
+            border-radius: 100%;
+            content: "";
+            display: block;
+            height: 15px;
+            position: absolute;
+            top: 4px; left: 0;
+            width: 15px;
+            /*15px;*/
+            transition: background 0.3s ease-in-out,
+                    border 0.3s ease-in-out;
+        }
+        &:after {
+            content: "";
+            width: 3px;
+            background: #CCD5DB;
+            display: block;
+            position: absolute;
+            top: 24px; bottom: 0; left: 6px;
+        }
+        .timeline-item:last-child &:after {
+            content: none;
+        }
+    }
+
+     /************ APPROVED ***************/
+
+    .timeline-marker-approved {
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 15px;
+        &:before {
+            background: $approved-color;
+            /*border: 2px solid transparent;*/
+            border-radius: 100%;
+            content: "";
+            display: block;
+            height: 15px;
+            position: absolute;
+            top: 4px; left: 0;
+            width: 15px;
+            /*15px;*/
+            transition: background 0.3s ease-in-out,
+                    border 0.3s ease-in-out;
+        }
+        &:after {
+            content: "";
+            width: 3px;
+            background: #CCD5DB;
+            display: block;
+            position: absolute;
+            top: 24px; bottom: 0; left: 6px;
+        }
+        .timeline-item:last-child &:after {
+            content: none;
+        }
+    }
+
+     /************ REJECTED ***************/
+
+    .timeline-marker-rejected {
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 15px;
+        &:before {
+            background: $rejected-color;
+            /*border: 2px solid transparent;*/
+            border-radius: 100%;
+            content: "";
+            display: block;
+            height: 15px;
+            position: absolute;
+            top: 4px; left: 0;
+            width: 15px;
+            /*15px;*/
+            transition: background 0.3s ease-in-out,
+                    border 0.3s ease-in-out;
+        }
+        &:after {
+            content: "";
+            width: 3px;
+            background: #CCD5DB;
+            display: block;
+            position: absolute;
+            top: 24px; bottom: 0; left: 6px;
+        }
+        .timeline-item:last-child &:after {
+            content: none;
+        }
+    }
+    /*.timeline-item:not(.period):hover .timeline-marker:before {
+        background: transparent;
+        border: 2px solid $primary-color;
+    }*/
+
+    /*----- TIMELINE CONTENT -----*/
+
+    .timeline-content {
+        padding-bottom: 40px;
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    /*----- TIMELINE PERIOD -----*/
+    
+    .period {
+        padding: 0;
+        .timeline-info {
+            display: none;
+        }
+        .timeline-marker {
+            &:before {
+                background: transparent;
+                content: "";
+                width: 15px;
+                height: auto;
+                border: none;
+                border-radius: 0;
+                top: 0;
+                bottom: 30px;
+                position: absolute;
+                border-top: 3px solid #CCD5DB;
+                border-bottom: 3px solid #CCD5DB;
+            }
+            &:after {
+                content: "";
+                height: 32px;
+                top: auto;
+            }
+        }
+        .timeline-content {
+            padding: 40px 0 70px;
+        }
+        .timeline-title {
+            margin: 0;
+        }
+    }
+
+    /*----------------------------------------------
+        MOD: TIMELINE SPLIT
+    ----------------------------------------------*/
+
+        .timeline-split {
+            @media (min-width: 768px) {
+                .timeline {
+                    display: table;
+                }
+                .timeline-item {
+                    display: table-row;
+                    padding: 0;
+                }
+                .timeline-info,
+                .timeline-marker,
+                .timeline-content,
+                .period .timeline-info {
+                    display: table-cell;
+                    vertical-align: top;
+                }
+                .timeline-marker {
+                    position: relative;
+                }
+                .timeline-content {
+                    padding-left: 30px;
+                }
+                .timeline-info {
+                    padding-right: 30px;
+                }
+                .period .timeline-title {
+                    position: relative;
+                    left: -45px;
+                }
+            }
+        }
+
+    /*----------------------------------------------
+        MOD: TIMELINE CENTERED
+    ----------------------------------------------*/
+
+        .timeline-centered {
+            @extend .timeline-split;
+            @media (min-width: 992px) {
+                &,
+                .timeline-item,
+                .timeline-info,
+                .timeline-marker,
+                .timeline-content {
+                    display: block;
+                    margin: 0;
+                    padding: 0;
+                }
+                .timeline-item {
+                    padding-bottom: 40px;
+                    overflow: hidden;
+                }
+                .timeline-marker {
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -7.5px;
+                }
+                .timeline-info,
+                .timeline-content {
+                    width: 50%;
+                }
+                > .timeline-item:nth-child(odd) .timeline-info {
+                    float: left;
+                    text-align: right;
+                    padding-right: 30px;
+                }
+                > .timeline-item:nth-child(odd) .timeline-content {
+                    float: right;
+                    text-align: left;
+                    padding-left: 30px;
+                }    
+                > .timeline-item:nth-child(even) .timeline-info {
+                    float: right;
+                    text-align: left;
+                    padding-left: 30px;
+                }
+                > .timeline-item:nth-child(even) .timeline-content {
+                    float: left;
+                    text-align: right;
+                    padding-right: 30px;
+                }
+                > .timeline-item.period .timeline-content {
+                    float: none;
+                    padding: 0;
+                    width: 100%;
+                    text-align: center;
+                }
+                .timeline-item.period {
+                    padding: 50px 0 90px;
+                }
+                .period .timeline-marker:after {
+                    height: 30px;
+                    bottom: 0;
+                    top: auto;
+                }
+                .period .timeline-title {
+                    left: auto;
+                }
+            }
+        }
+
+    /*----------------------------------------------
+        MOD: MARKER OUTLINE
+    ----------------------------------------------*/
+        
+        .marker-outline {
+            .timeline-marker {
+                &:before {
+                    background: transparent;
+                    border-color: $primary-color;
+                }
+            }
+            .timeline-item:hover .timeline-marker:before {
+                background: $primary-color;
+            }
+        }
+
+    }
+}
+

@@ -1,0 +1,18 @@
+<%# for c in @cases_current_user %>
+<%#= render partial: "partials/card", locals: {c: c, vote: @cases_need_voting} %>
+
+<%# end %>
+
+<div class="center">
+  <!-- <div class="card"> -->
+  <div class="row">
+
+    <%= render partial: "partials/dash_buttons", locals: {all: @all_cases, vote: @cases_need_voting}%>
+
+    <%# for c in @all_cases %>
+    <%#= render partial: "partials/card", locals: {c: c, vote: @cases_need_voting} %>
+
+    <%# end %>
+    </div>
+            
+</div>

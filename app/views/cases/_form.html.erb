@@ -1,38 +1,44 @@
 <%= simple_nested_form_for @case, :html => { :class => '' } do |case_form| %>
-    <div class="card">  
-      <div class="row">
-        <div class="col s12">
-          <fieldset>
-            <%= render :partial => "case_fields", :locals => { :f => case_form } %>
-          </fieldset>
-        </div>
-      </div>
+<div class="card">  
+  <div class="row">
+    <div class="col s12">
+      <fieldset>
+        <%= render :partial => "case_fields", :locals => { :f => case_form } %>
+      </fieldset>
+    </div>
+  </div>
 
-      <div class = "card">
-      <div class = "row">
-        <div class = "col s12">
-         
-          <%= case_form.fields_for :attachments do |attachment_form| %>
-            <%= render :partial => "attachment_fields", :locals => { :f => attachment_form } %>
-          <% end %>
-
-          <p>
-            <br /><%= case_form.link_to_add("Add Attachment", :attachments, :class => 'btn') %>
-            <br>
-            <br>
-          </p>
-        </div>
-      </div>
-      </div>
-
-
+  <div class = "card">
     <div class = "row">
-      <div class="form-actions col s4 offset-s4">
-        <%= case_form.submit "Submit", :class => 'btn orange lighten-2' %>
-        <%= link_to 'Cancel', cases_path, :class => 'btn orange lighten-2' %>
+      <div class = "col s12">
+       
+        <%= case_form.fields_for :attachments do |attachment_form| %>
+        <%= render :partial => "attachment_fields", :locals => { :f => attachment_form } %>
+        <% end %>
+
+        <p>
+          <br />
+          <div class="col s12 center-align">
+          <%= case_form.link_to_add("Add Attachment", :attachments, :class => 'btn') %>
+          </div>
+          <br>
+          <br>
+        </p>
       </div>
     </div>
   </div>
+
+
+  <div class = "row">
+  <div class="form-actions col s12 center-align">
+    <!-- <div class="form-actions col s12 offset-s4"> -->
+      <span>
+      <%= case_form.submit "Submit", :class => 'btn orange lighten-2' %>
+      <%= link_to 'Cancel', cases_path, :class => 'btn orange lighten-2' %>
+      </span>
+    </div>
+  </div>
+</div>
 
 
 <% end %>

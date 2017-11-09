@@ -1,0 +1,21 @@
+<div class="col s12 m6 l3">
+ <div class="card">
+  <div class="card-content name">
+    <%= user.proper_name %>
+    <% if current_user.role? :admin or current_user.email == user.email %>
+    <%= link_to edit_user_path(user) do %>
+    <i class="material-icons">edit</i>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="card-content grey lighten-4">
+    <div ><%= mail_to user.email %></div>
+    <div id="test5">
+      <%= user.phone.nil? ? "N/A" : (user.phone.insert(0, '(').insert(4, ') ').insert(-5, '-')) %>
+    </div>
+    <div id="test6">    
+      <%= user.role_display.capitalize %>
+    </div>
+  </div>
+</div>
+</div>
