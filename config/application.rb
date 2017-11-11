@@ -6,6 +6,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Moving configuration settings to a separate hash available throughout the application
+SETTINGS = YAML.load(File.read(File.expand_path('../settings.yml', __FILE__)))
+SETTINGS.merge! SETTINGS.fetch(Rails.env, {})
+SETTINGS.symbolize_keys!
+
 module DeaconTracking
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
