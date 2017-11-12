@@ -21,3 +21,6 @@
 
 # Ignore the settings file
 /config/settings.yml
+
+.DS_Store
+/app/.DS_Store
