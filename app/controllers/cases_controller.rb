@@ -6,12 +6,16 @@ class CasesController < ApplicationController
   # GET /cases
   # GET /cases.json
   def index
-    @years = []
-    @var = Case.earliest_date.to_a[0].date_submitted.year
-    while(@var <= Time.now.year)
-      @years.push(@var)
-      @var += 1
-    end 
+    if logged_in?
+      @years = []
+      if !Case.all.empty?
+        @var = Case.earliest_date.to_a[0].date_submitted.year
+        while(@var <= Time.now.year)
+          @years.push(@var)
+          @var += 1
+        end 
+      end
+    end
     # if logged_in, can only see own if care_d or can see all of them if financial_d
     if logged_in?
 
@@ -30,7 +34,8 @@ class CasesController < ApplicationController
       end
 
       @cases_need_voting = Case.not_voted_by_deacon(current_user)
-  
+      @total_amt_approved = Case.total_amt_approved()
+      
     else
       redirect_to home_path
     end
@@ -77,9 +82,9 @@ class CasesController < ApplicationController
   def update
     if @case.update(case_params)
       redirect_to case_path(@case), notice: "Successfully updated case: #{@case.subject} for #{@case.client_name}."
-      else
-        render action: 'edit'
-      end
+    else
+      render action: 'edit'
+    end
   end
 
   # DELETE /cases/1
@@ -98,7 +103,7 @@ class CasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_params
-      params.require(:case).permit(:client_name, :subject, :notes, :recommendation, :date_submitted, :summary, :status, :deacon_id, :attachment_ids => [], attachments_attributes: [:id, :name, :doc, :remove_doc, :_destroy])
+      params.require(:case).permit(:client_name, :subject, :notes, :recommendation, :amount_requested, :amount_approved, :date_submitted, :summary, :status, :deacon_id, :attachment_ids => [], attachments_attributes: [:id, :name, :doc, :remove_doc, :_destroy])
     end
 
     def search_cases_for(query)
@@ -107,4 +112,4 @@ class CasesController < ApplicationController
         return redirect_to @cases.first
       end
     end 
-end
+  end

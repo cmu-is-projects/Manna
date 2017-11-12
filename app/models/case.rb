@@ -112,7 +112,8 @@ class Case < ActiveRecord::Base
 
   def self.total_amt_approved()
     total_amt = 0
-    for c in Case.approved do
+    cases = Case.approved
+    for c in cases do
       total_amt += c.amount_approved
     end
     return total_amt

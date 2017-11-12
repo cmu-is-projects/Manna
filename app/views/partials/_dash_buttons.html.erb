@@ -33,7 +33,13 @@
     <div class="card-panel b">
       <br>
       <span class="white-text"> 
-       <h5> <%= number_to_currency(Case.total_amt_approved()) %> </h5> Amount approved
+       <h5> 
+       <% if amount.nil? %> 
+      0
+      <% else %>
+       <%= number_to_currency(amount) %> 
+       <% end %>
+       </h5> Amount approved
       </span> 
      
   </div>
