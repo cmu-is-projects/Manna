@@ -1,78 +1,100 @@
-<div id="case">
+<br>
+
+<div id="case show-page">
   <div class = "row">
     <div class = "col s12">
       <h2> <%= @case.subject %></h2>
     </div>
   </div>
 
-<div class ="card">
-<% if can? :read, @case %>
+  <div class ="card">
+    <% if can? :read, @case %>
 
     <div class = "row">
       <div class = "col s12">
 
         <% unless current_user.role?(:staff) || current_user.role?(:care_deacon) %>
 
-          <%= link_to new_vote_taken_path(@case.id), remote: true do%>
-          <h3>Vote</h3>
+        <%#= link_to new_vote_taken_path(@case.id), remote: true do%>
+        <!-- <h4>Vote</h4> -->
+        <%# end %>
+
+        <%= link_to new_vote_taken_path(@case.id) do %>
+          <h4>Vote</h4>
         <% end %>
-        <h3>Tally:
-            <span class="num_yes"><%= @case.votes.yes.count %></span> |
-            <span class ="num_no"><%= @case.votes.no.count%></span>
-        </h3>
-      <% end %>
+
+        <h4>Tally:
+          <span class="num_yes"><%= @case.votes.yes.count %></span> |
+          <span class ="num_no"><%= @case.votes.no.count%></span>
+        </h4>
+        <% end %>
 
 
         <div id="vote-form" style="display:none;"></div>
       </div>
+    </div>
   </div>
-</div>
 
-<div class = "card">
-  <div class = "row">
-    <div class ="col s10 offset-s1">
-      <h4>Client:</h4><p><%= @case.client_name %></p>
-      <h4>Status:</h4> <p><%= @case.status %></p>
-      <h4>Description:</h4><p><%= @case.summary %></p>
-      <h4>Date Submitted:</h4><p><%= @case.date_submitted.to_formatted_s(:rfc822) %></p>
-    
-  </div>
-</div>
-</div>
+  <div class = "card">
+    <div class = "row">
+      <div class ="col s10 offset-s1">
+      
+        <h5>Client:</h5>
+        <p><%= @case.client_name %></p>
 
+        <h5>Status:</h5> 
+        <p><%= @case.status %></p>
 
-<% if @attachments_list.nil? %>
-<div class="card">
-  <p><em>There are no attachments.</em></p>
-</div>
-<% else %>
-<div class="card">
-  <div class = "row">
-    <div class ="col s10 offset-s1">
-      <h4>Documents/Attachments</h4>
-          <ul>
-          <% @attachments_list.each do |attachment| %>
-              <li><%= link_to "#{attachment.name}", attachment.doc_url %></li>
-            <% end %>
-          </ul>
-           <h4>File/Date Uploaded</h4>
+        <h5> Amount Requested: </h5>
+        <p> 
+        <% if @case.amount_requested.nil?%>
+        0
+        <% else %>
+        <%=number_to_currency(@case.amount_requested)%>
+        <%end %>
+        <h5>Description:</h5>
+        <p><%= @case.summary %></p>
+
+        <h5>Date Submitted:</h5>
+        <p><%= @case.date_submitted.to_formatted_s(:rfc822) %></p>
+
       </div>
     </div>
   </div>
 
-<% end %>
 
- <div class="card">  
+  <% if @attachments_list.nil? %>
+  <div class="card">
+    <p><em>There are no attachments.</em></p>
+  </div>
+  <% else %>
+  <div class="card">
+    <div class = "row">
+      <div class ="col s10 offset-s1">
+        <h5>Documents/Attachments</h5>
+        <ul>
+          <% @attachments_list.each do |attachment| %>
+          <li><%= link_to "#{attachment.name}", attachment.doc_url %></li>
+          <% end %>
+        </ul>
+        <h5>File/Date Uploaded</h5>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+  <div class="card">  
    <div class ="col s10 offset-s1">  
     <% if !@case.recommendation.nil? %>
-      <div class = "row">
-        <h4 class = "description_below">Recommendation</h4>
-        <p> <%= @case.recommendation %> </p>
-      </div>
+    <div class = "row">
+      <h5 class = "description_below">Recommendation</h5>
+      <p> <%= @case.recommendation %> </p>
+    </div>
     <% end %>
 
     <div class = "row">
-      <h4 class = "description_below">Notes</h4>
+      <h5 class = "description_below">Notes</h5>
       <p> <%= @case.notes %> </p>
     </div>
   </div>
@@ -83,24 +105,25 @@
   <div class = "row">
     <div class = "col s10 offset-s1">
       <% if can? :edit, @case %>
-        <%= link_to 'Edit', edit_case_path(@case) %> |
+            <%#= case_form.submit "Submit", :class => 'btn orange lighten-2' %>
+      <%= link_to 'Edit', edit_case_path(@case) , :class => 'btn orange lighten-2'%> |
       <% end %>
-      <%= link_to 'Back', cases_path %>
-    </div>
+      <%= link_to 'Back', cases_path , :class => 'btn'%> |
     <% if can? :destroy, @case %>
-      <div class = "two columns">
-        <!-- if can delete -->
-        <%= link_to 'Destroy', @case, method: :delete, data: { confirm: 'Are you sure?' }  %>
-      </div>
+    <!-- <div class = "two columns"> -->
+      <!-- if can delete -->
+      <%= link_to 'Destroy', @case, method: :delete, data: { confirm: 'Are you sure?' }  , :class => 'btn red darken-2'%>
+    <!-- </div> -->
     <% end %>
+        </div>
   </div>
-  </div>
+</div>
 
-  </div>
+</div>
 
-<div class="card">
-  <!-- DISQUS -->
-  <div id="disqus_thread"></div>
+<!-- <div class="card">
+  DISQUS
+  <div id="disqus_thread"></div> -->
   <script>
 
   /**
@@ -113,16 +136,16 @@
   // };
 
   (function() { // DON'T EDIT BELOW THIS LINE
-  var d = attachment, s = d.createElement('script');
-  s.src = 'https://manna-1.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
+    var d = attachment, s = d.createElement('script');
+    s.src = 'https://manna-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
   })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 <% else %>
-  <h3>You don't have permission to view this</h3>
+<h4>You don't have permission to view this</h4>
 <% end %>
 
 </div>

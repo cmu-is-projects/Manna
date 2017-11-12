@@ -17,9 +17,11 @@
     <%# end %>
 
     <div class="timeline-content">
+            <%= link_to case_path(c) do %> 
         <h5 class="timeline-title"> 
         <%= c.subject %> 
-        </h3>
+        </h5>
+        <% end %>
 
         <p class="cname"> <%= c.client_name %> </p>
         <p class="cname"> <%= c.status.titleize %> </p>

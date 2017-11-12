@@ -31,6 +31,7 @@ class VotesController < ApplicationController
     @vote.deacon_id = current_user.id
     # @vote.case_id = params[:case_id] unless params[:case_id].nil?
     @vote.date_submitted = Date.current
+    @vote.case_id = params[:id] unless params[:id].nil?
 
     if @vote.save
       redirect_to votes_path, notice: "Successfully created vote."

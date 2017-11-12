@@ -1,5 +1,10 @@
+<% if @vote.case.nil? %>
+<h4>  You cannot vote at this time. </h4>
+<%else%>
+
 <div class="card">
-  <%= simple_form_for @vote, remote: true do |f|   %>
+
+  <%= simple_form_for @vote do |f|   %>
 
   <% if @vote.errors.any? %>
     <% @vote.errors.full_messages.each do |message| %>
@@ -22,3 +27,5 @@
     <%= f.button :submit, :id => 'voteSubmit', :value => 'Done', :style => 'display:none;' %>
   <% end %>
 </div>
+
+<%end %>
