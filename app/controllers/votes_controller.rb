@@ -34,7 +34,7 @@ class VotesController < ApplicationController
     @vote.case_id = params[:id] unless params[:id].nil?
 
     if @vote.save
-      redirect_to votes_path, notice: "Successfully created vote."
+      redirect_to case_path(@vote.case), notice: "Successfully created vote."
     else
       render action: 'new'
     end

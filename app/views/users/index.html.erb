@@ -2,13 +2,13 @@
    <br>
    <% if !@active_users.empty? %>
    <span>
-   <h1> Deacons and Staff 
+   <h3> Deacons and Staff 
    <%# if current_user.role? :admin %>
     <%#= link_to new_user_path do %>
       <!-- <i class="material-icons">add</i>  -->
     <%# end %>
     <%# end %>
-    </h1>
+    </h3>
     </span>
     <% if current_user.role? :admin %>
         <div class="center">
