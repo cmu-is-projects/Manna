@@ -10,7 +10,7 @@
 var disqus_config = function () {
 this.shortname = "acacmanna";
 this.page.url = "http://acacmanna.com";
-// this.page.url = "<%= url_for(@case) %>";  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.url = "<%#= url_for(@case) %>";  // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = "<%= @case.id %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 

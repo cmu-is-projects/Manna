@@ -18,14 +18,14 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, message: "is not a valid format", on: :create
 
   #scopes
-  scope :active,          -> { where(active: true) }
-  scope :inactive,        -> { where(active: false) }
-  scope :deacons,         -> { where.not(role: 'staff') } #should be where role not admin and staff
+  scope :active,              -> { where(active: true) }
+  scope :inactive,            -> { where(active: false) }
+  scope :deacons,             -> { where.not(role: 'staff') } #should be where role not admin and staff
   scope :care_deacons,        -> { where(role: 'care_deacon') }
   scope :financial_deacons,   -> { where(role: 'financial_deacon') }
-  scope :staffs,      -> { where(role: 'staff') }
-  scope :head_deacons, -> { where(role: 'head_deacon')}
-  scope :alphabetical,    -> { order('last_name, first_name') }
+  scope :staffs,              -> { where(role: 'staff') }
+  scope :head_deacons,        -> { where(role: 'head_deacon')}
+  scope :alphabetical,        -> { order('last_name, first_name') }
 
 
   #show cases by user
