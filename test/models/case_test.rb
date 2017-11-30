@@ -23,6 +23,8 @@ class CaseTest < ActiveSupport::TestCase
   should_not allow_value(nil).for(:status)
 
   should accept_nested_attributes_for(:documents).allow_destroy(true)
+  should accept_nested_attributes_for(:payments).allow_destroy(true)
+
 
   context "Creating a context for users" do
     setup do
