@@ -2,8 +2,8 @@ class PaymentsController < ApplicationController
 
     before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
-  # GET /attachments
-  # GET /attachments.json
+  # GET /payments
+  # GET /payments.json
   def index
     if logged_in?
       @payments = Payment.all
@@ -15,29 +15,28 @@ class PaymentsController < ApplicationController
   def show
   end
 
-  # GET /attachments/new
+  # GET /payments/new
   def new
     @payment = Payment.new
   end
 
-  # GET /attachments/1/edit
+  # GET /payments/1/edit
   def edit
   end
 
-  # POST /attachments
-  # POST /attachments.json
+  # POST /payments
+  # POST /payments.json
   def create
-    @payment = Payment.new(attachment_params)
-
-    if @attachment.save
+    @payment = Payment.new(payment_params)
+    if @payment.save
       redirect_to payments_path, notice: "Successfully created payment."
     else
       render action: 'new'
     end
   end
 
-  # PATCH/PUT /attachments/1
-  # PATCH/PUT /attachments/1.json
+  # PATCH/PUT /payments/1
+  # PATCH/PUT /payments/1.json
   def update
     if @payment.update(payment_params)
       redirect_to payments_path, notice: "Successfully updated payment."
@@ -46,20 +45,20 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # DELETE /attachments/1
-  # DELETE /attachments/1.json
+  # DELETE /payments/1
+  # DELETE /payments/1.json
   def destroy
     @payment.destroy
     redirect_to payments_path, notice: "Successfully removed payment."
   end
 
   private
-  def set_attachment
+  def set_payment
     @payment = Payment.find(params[:id])
   end
 
-  def attachment_params
-    params.require(:payment).permit(:paymnet_type, :payable_to, :amount, :case_id, :description)
+  def payment_params
+    params.require(:payment).permit(:payment_type, :payable_to, :amount, :case_id, :description)
   end
 
 end

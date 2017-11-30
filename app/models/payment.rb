@@ -7,8 +7,8 @@ class Payment < ActiveRecord::Base
 
     #validations
     validates_presence_of :case_id
-    validates_inclusion_of :payment_type, in: $PAYMENT_TYPES, message: "is not an option"
-
-    
+    validates :payment_type, :presence => false, :uniqueness => false, :allow_blank => true
+    # validates_inclusion_of :payment_type, in: $PAYMENT_TYPES, message: "is not an option"
+    validates_numericality_of :amount, greater_than_or_equal_to: 0
     
 end
