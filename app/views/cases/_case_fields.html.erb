@@ -3,8 +3,8 @@
 <%= f.input :subject, placeholder: 'Paying for Medical Bill' %>
 <%= f.input :client_name, label: 'Client', placeholder: 'John Doe' %>
 <%= f.input :deacon_id, :collection => User.deacons.active.alphabetical %>
-<%= f.input :amount_requested, as: :float, placeholder: 'Amount Requested' %>
-<%= f.input :amount_approved, as: :float, placeholder: 'Amount Approved' %>
+<%= f.input :amount_requested, as: :currency, placeholder: 'Amount Requested' %>
+<%= f.input :amount_approved, as: :currency, placeholder: 'Amount Approved' %>
  <!-- :include_blank => true  -->
 <%= f.input :summary, placeholder: 'Write description here...', as: :text, :input_html => { :rows => 10, :style => 'resize: none;'} %>
 <%= f.input :recommendation, placeholder: 'Any opinions you want to share?', as: :text, :input_html => { :rows => 10, :style => 'resize: none;'} %>
