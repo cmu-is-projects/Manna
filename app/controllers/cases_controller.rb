@@ -48,6 +48,7 @@ class CasesController < ApplicationController
   # GET /cases/1.json
   def show
     @attachments_list = @case.attachments.all
+    @payments_list = @case.payments.all
   end
 
   # GET /cases/new

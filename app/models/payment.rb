@@ -3,8 +3,12 @@ class Payment < ActiveRecord::Base
     belongs_to :case
 
 
-
+    $PAYMENT_TYPES = %w[utilities rent medical vehicle_repair other]
 
     #validations
-    validates_inclusion_of :role, in: %w[admin care_deacon financial_deacon head_deacon staff], message: "is not an option"
+    validates_presence_of :case_id
+    validates_inclusion_of :payment_type, in: $PAYMENT_TYPES, message: "is not an option"
+
+    
+    
 end

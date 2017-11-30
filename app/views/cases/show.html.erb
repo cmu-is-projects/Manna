@@ -62,6 +62,36 @@
       </div>
     </div>
 
+    <% if @payments_list.nil? %>
+    <div class="card">
+      <p><em>There are no Payments.</em></p>
+    </div>
+    <% else %>
+    <!-- <div class="card">
+      <div class = "row">
+        <div class ="col s10 offset-s1">
+          <h5>Documents/Attachments</h5>
+          <ul>
+            <%# @attachments_list.each do |attachment| %>
+            <li><%#= link_to "#{attachment.name}", attachment.doc_url %></li>
+            <%# end %>
+          </ul>
+          <h5>File/Date Uploaded</h5>
+        </div>
+      </div>
+    </div> -->
+    <div class="card">
+      <div class = "row">
+        <div class ="col s10 offset-s1">
+          <h5>Payments</h5>
+
+          <%= render :partial => "payment_table_display" %>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+
 
     <% if @attachments_list.nil? %>
     <div class="card">
@@ -122,11 +152,11 @@
 </div>
 
 <div class="card">
-DISQUS
-<%= render 'disqus' %>
-<% else %>
-<h4>You don't have permission to view this</h4>
-<% end %>
+  DISQUS
+  <%= render 'disqus' %>
+  <% else %>
+  <h4>You don't have permission to view this</h4>
+  <% end %>
 
 </div>
 </div>

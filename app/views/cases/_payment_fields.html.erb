@@ -1,0 +1,6 @@
+<div class = "card">
+    <%= f.input :payable_to, placeholder: 'Payable To' %>
+    <%= f.input :amount, as: :float, label: 'Amount', placeholder: 'Amount' %>
+    <%= f.input :payment_type, collection: ["utilities", "rent", "medical"] %>
+    <%= f.input :description, placeholder: 'Write description here...', as: :text, :input_html => { :rows => 10, :style => 'resize: none;'} %>
+</div>
