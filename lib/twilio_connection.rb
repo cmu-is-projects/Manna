@@ -8,9 +8,12 @@ module TwilioConnection
   def send_sms(to_number, message, real)
     if real
       # real credentials
-      account_sid = Rails.application.secrets.twilio_sid
-      auth_token = Rails.application.secrets.twilio_auth_token
-      from_number = Rails.application.secrets.twilio_number
+      # account_sid = Rails.application.secrets.twilio_sid
+      # auth_token = Rails.application.secrets.twilio_auth_token
+      # from_number = Rails.application.secrets.twilio_number
+      account_sid = SETTINGS[:twilio_sid]
+      auth_token = SETTINGS[:twilio_auth_token]
+      from_number = SETTINGS[:twilio_number]
     else    
       # test credentials
       account_sid = Rails.application.secrets.twilio_test_sid
