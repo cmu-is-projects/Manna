@@ -55,6 +55,7 @@ class CasesController < ApplicationController
   def new
     @case = Case.new
     @case.attachments.build
+    @case.payments.build
     # @case.votes.case_id = self.id
     @case.votes.build
   end
@@ -69,6 +70,27 @@ class CasesController < ApplicationController
 
     @case = Case.new(case_params)
     if @case.save
+      # save payments
+      # num_payments = params[:case][:payments_attributes].count
+      # for item in params[:case][:payments_attributes]
+      #   p = Payment.new
+      #   p.case_id = @case.id
+      #   p.payment_type = item[:payment_type]
+      #   p.payable_to = item[:payable_to]
+      #   p.description = item[:description]
+      #   p.amount = item[:amount]
+      #   p.save!
+      # end
+      # num_payments.times do |i|
+      #   p = Payment.new
+      #   p.case_id = @case.id
+      #   p.payment_type = params[:case][:payments_attributes][i.to_s][:payment_type]
+      #   p.payable_to = params[:case][:payments_attributes][i.to_s][:payable_to]
+      #   p.description = params[:case][:payments_attributes][i.to_s][:description]
+      #   p.amount = params[:case][:payments_attributes][i.to_s][:amount]
+      #   p.save!
+      # end
+
       # if saved to database
       flash[:notice] = "Successfully created case: #{@case.subject} for #{@case.client_name}."
       redirect_to @case # go to show case page
