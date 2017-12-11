@@ -18,7 +18,7 @@ class Case < ActiveRecord::Base
   has_many :payments
 
   validates_numericality_of :amount_requested, greater_than_or_equal_to: 0
-  validates_numericality_of :amount_approved, greater_than_or_equal_to: 0
+  validates_numericality_of :amount_approved, greater_than_or_equal_to: 0, allow_blank: true
   validates_presence_of :client_name, :summary, :subject, :amount_requested
   validates_inclusion_of :status, in: $STATUSES, message: "is not an option"
   accepts_nested_attributes_for :attachments, reject_if: lambda { |attachment| attachment[:name].blank? }, allow_destroy: true
