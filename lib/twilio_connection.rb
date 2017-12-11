@@ -40,7 +40,7 @@ module TwilioConnection
   def send_submitted_sms(manna_case)
     recipients = User.head_deacons.to_a + User.financial_deacons.to_a
     recipients.each do |recipient| 
-      message = "Hello, #{recipient.first_name}. A new case has been submitted for review. Click here to view: http://localhost:3000/cases/#{manna_case.id.to_s}"
+      message = "Hello, #{recipient.first_name}. A new case has been submitted for review. Click here to view: http://acacmanna.org/cases/#{manna_case.id.to_s}"
       to_phone_num = recipient.phone.length > 10 ? "+#{recipient.phone}" : "+1#{recipient.phone}"
       send_sms(to_phone_num, message, $real)
     end
@@ -50,7 +50,7 @@ module TwilioConnection
     recipients = User.staffs.to_a 
     recipients.push(manna_case.deacon)
     recipients.each do |recipient|
-      message = "Hello, #{recipient.first_name}. The case '#{manna_case.subject}' has been approved. Click here to view: http://localhost:3000/cases/#{manna_case.id.to_s}" 
+      message = "Hello, #{recipient.first_name}. The case '#{manna_case.subject}' has been approved. Click here to view: http://acacmanna.org/cases/#{manna_case.id.to_s}" 
       to_phone_num = recipient.phone.length > 10 ? "+#{recipient.phone}" : "+1#{recipient.phone}"
       send_sms(to_phone_num, message, $real)
     end
@@ -58,7 +58,7 @@ module TwilioConnection
 
   def send_rejected_sms(manna_case)
     recipient = manna_case.deacon
-    message = "Hello, #{recipient.first_name}. Your case '#{manna_case.subject}' has been rejected. Click here to view: http://localhost:3000/cases/#{manna_case.id.to_s}"
+    message = "Hello, #{recipient.first_name}. Your case '#{manna_case.subject}' has been rejected. Click here to view: http://acacmanna.org/cases/#{manna_case.id.to_s}"
     to_phone_num = recipient.phone.length > 10 ? "+#{recipient.phone}" : "+1#{recipient.phone}"
     send_sms(to_phone_num, message, $real)
   end 
@@ -67,7 +67,7 @@ module TwilioConnection
     # A check for case.subject has been processed and is awaiting your signature.
     recipients = User.head_deacons.to_a
     recipients.each do |recipient| 
-      message = "Hello, #{recipient.first_name}. A check for the case '#{manna_case.subject}' has been processed and is awaiting your signature. Click here for details: http://localhost:3000/cases/#{manna_case.id.to_s}"
+      message = "Hello, #{recipient.first_name}. A check for the case '#{manna_case.subject}' has been processed and is awaiting your signature. Click here for details: http://acacmanna.org/cases/#{manna_case.id.to_s}"
       to_phone_num = recipient.phone.length > 10 ? "+#{recipient.phone}" : "+1#{recipient.phone}"
       send_sms(to_phone_num, message, $real)
     end
@@ -78,7 +78,7 @@ module TwilioConnection
     recipients = User.head_deacons.to_a
     recipients.push(manna_case.deacon)
     recipients.each do |recipient| 
-      message = "Hello, #{recipient.first_name}. A check for the case '#{manna_case.subject}' has been signed. Click here for details: http://localhost:3000/cases/#{manna_case.id.to_s}"
+      message = "Hello, #{recipient.first_name}. A check for the case '#{manna_case.subject}' has been signed. Click here for details: http://acacmanna.org/cases/#{manna_case.id.to_s}"
       to_phone_num = recipient.phone.length > 10 ? "+#{recipient.phone}" : "+1#{recipient.phone}"
       send_sms(to_phone_num, message, $real)
     end
