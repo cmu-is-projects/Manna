@@ -34,4 +34,8 @@ FactoryGirl.define do
     association :document
   end
 
+  factory :payment do
+    association :case
+  end
+
 end

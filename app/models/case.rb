@@ -15,11 +15,14 @@ class Case < ActiveRecord::Base
   has_many :votes
   has_many :case_attachments
   has_many :attachments, through: :case_attachments
+  has_many :payments
 
+  validates_numericality_of :amount_requested, greater_than_or_equal_to: 0
+  validates_numericality_of :amount_approved, greater_than_or_equal_to: 0
   validates_presence_of :client_name, :summary, :subject, :amount_requested
   validates_inclusion_of :status, in: $STATUSES, message: "is not an option"
   accepts_nested_attributes_for :attachments, reject_if: lambda { |attachment| attachment[:name].blank? }, allow_destroy: true
-
+  accepts_nested_attributes_for :payments, reject_if: lambda { |payment| payment[:payable_to].blank? }, allow_destroy: true
 
   #scopes
   scope :chronological,       -> { order('date_submitted DESC') }

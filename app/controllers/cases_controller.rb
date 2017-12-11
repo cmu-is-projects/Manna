@@ -48,6 +48,7 @@ class CasesController < ApplicationController
   # GET /cases/1.json
   def show
     @attachments_list = @case.attachments.all
+    @payments_list = @case.payments.all
   end
 
   # GET /cases/new
@@ -103,7 +104,9 @@ class CasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_params
-      params.require(:case).permit(:client_name, :subject, :notes, :recommendation, :amount_requested, :amount_approved, :date_submitted, :summary, :status, :deacon_id, :attachment_ids => [], attachments_attributes: [:id, :name, :doc, :remove_doc, :_destroy])
+      params.require(:case).permit(:client_name, :subject, :notes, :recommendation, :amount_requested, :amount_approved, :date_submitted, :summary, :status, :deacon_id, :attachment_ids => [], \
+        attachments_attributes: [:id, :name, :doc, :remove_doc, :_destroy], \
+        payments_attributes: [:id, :payment_type, :payable_to, :amount, :case_id, :description])
     end
 
     def search_cases_for(query)
