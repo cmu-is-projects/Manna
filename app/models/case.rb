@@ -6,7 +6,7 @@ class Case < ActiveRecord::Base
 
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   # commenting this out for testing purpose, enable after testing
-  before_create :set_date
+  # before_create :set_date
   after_create :send_submitted_sms
   after_update :send_update_sms
 
@@ -26,6 +26,7 @@ class Case < ActiveRecord::Base
 
   #scopes
   scope :chronological,       -> { order('date_submitted DESC') }
+  scope :chronological_reverse, -> { order('date_submitted ASC') }
   scope :cases_in_month,      -> (mon,yr){where('EXTRACT(MONTH FROM date_submitted) = ? AND EXTRACT(YEAR FROM date_submitted) = ?',mon, yr)}
   # scope :cases_in_month,      -> (mon,yr) { where("(date_submitted + 1.month).month = ? AND (date_submitted + 1.month).year = ?", mon, yr)} 
   scope :client_alphabetical, -> { order(:client_name)}

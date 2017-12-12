@@ -11,9 +11,9 @@ class CasesController < ApplicationController
       if !Case.all.empty?
         @var = Case.earliest_date.to_a[0].date_submitted.year
         while(@var <= Time.now.year)
-          @years.push(@var)
+          @years.insert(0, @var)
           @var += 1
-        end 
+        end
       end
     end
     # if logged_in, can only see own if care_d or can see all of them if financial_d
