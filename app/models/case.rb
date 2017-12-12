@@ -6,7 +6,7 @@ class Case < ActiveRecord::Base
 
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   # commenting this out for testing purpose, enable after testing
-  # before_create :set_date
+  before_create :set_date
   after_create :send_submitted_sms
   after_update :send_update_sms
 
@@ -106,7 +106,6 @@ class Case < ActiveRecord::Base
   #     ['Country (a-z)', 'country_name_asc']
   #   ]
   # end
-
 
 
   def self.not_voted_by_deacon(user)

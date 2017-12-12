@@ -1,0 +1,27 @@
+
+<%#= render partial: "partials/case_search"%>
+<br> 
+<br>
+<% if logged_in? %>
+<!-- <p id="notice"><%= notice %></p> -->
+
+<!-- <div class="card"> -->
+<h2>Listing Payments</h2>
+<div class="center">
+ <%#= link_to '+ NEW CASE', new_case_path, class: "btn orange lighten-2" %>
+</div>
+<br>
+<% if !@payments.empty? %>
+<%= render partial: "payments_table" %>
+
+<% else %>
+<h5>There are currently no payments in the system.</h5>
+<% end %>
+
+<% else %>
+<p>Please log in</p>
+<% end %>
+
+
+</li>
+</ul>

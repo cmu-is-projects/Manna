@@ -5,4 +5,7 @@
 
     <%#= f.input :payment_type, :collection => ['Utilities','Rent','Other']%>
     <%= f.input :description, placeholder: 'Write description here...', as: :text, :input_html => { :rows => 10, :style => 'resize: none;'} %>
+
+    <%= f.input :pay_by, :collection => $PAY_BY %>
+
 </div>

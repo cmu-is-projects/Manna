@@ -1,7 +1,8 @@
 
 
 <%= f.input :subject, placeholder: 'Paying for Medical Bill' %>
-<%= f.input :client_name, label: 'Client', placeholder: 'John Doe' %>
+<%= f.input :client_first_name, label: 'Client First Name', placeholder: 'John Doe' %>
+<%= f.input :client_name, label: 'Client Last Name', placeholder: 'John Doe' %>
 <%= f.input :deacon_id, :collection => User.deacons.active.alphabetical %>
 <%= f.input :amount_requested, as: :currency, placeholder: 'Amount Requested' %>
 <%= f.input :amount_approved, as: :currency, placeholder: 'Amount Approved' %>

@@ -15,7 +15,8 @@ User.create(first_name: 'Kane', last_name: 'Manage', email: 'staff@gmail.com', p
 Case.create({
     client_name: "Brown",
     client_first_name: "John",
-    date_submitted: Date.new(2016, 11, 30),
+    date_submitted: Faker::Date.between(1.year.ago, Date.current),
+    # Date.new(2016, 11, 30),
     # Faker::Date.between(1.year.ago, Date.current),
     summary: Faker::Lorem.paragraph(7),
     notes: Faker::Lorem.sentence(3),
@@ -31,7 +32,8 @@ Case.create({
 c = Case.new({
     client_name: "Greene",
     client_first_name: "Mark",
-    date_submitted: Date.new(2017, 12, 30),
+    date_submitted: Faker::Date.between(1.year.ago, Date.current),
+    # Date.new(2017, 12, 30),
     # Faker::Date.between(1.year.ago, Date.current),
     summary: Faker::Lorem.paragraph(7),
     notes: Faker::Lorem.sentence(3),
