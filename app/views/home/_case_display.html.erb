@@ -10,7 +10,8 @@
     <%= render partial: "partials/dash_buttons", locals: {
         all: @all_cases, 
         vote: @cases_need_voting, 
-        amount: @total_amt_approved
+        amount: Case.total_amt_approved()
+        # @total_amt_approved
         } %>
 
     <%# for c in @all_cases %>
