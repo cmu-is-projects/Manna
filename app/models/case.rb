@@ -3,6 +3,8 @@ include PgSearch
 class Case < ActiveRecord::Base
 
   # @@total_approved = 0
+  DISQUS_SHORTNAME = Rails.env == "development" ? "acacmanna-org".freeze : "acacmanna-org".freeze
+  DISQUS_URL = Rails.env == "development" ? "http://localhost:3000".freeze : "acacmanna.org".freeze
 
   belongs_to :deacon, class_name: "User", foreign_key: "deacon_id"
   # commenting this out for testing purpose, enable after testing
@@ -44,45 +46,6 @@ class Case < ActiveRecord::Base
   scope :voted_by_deacon,     -> (user_id) {joins(:votes).where('votes.deacon_id = ?', user_id)}
   scope :needs_vote,          -> (user_id) {joins(:votes).where('votes.deacon_id is NULL')}
 
-  # scope :search_query, lambda { |query|
-  #   return nil  if query.blank?
-  #   # condition query, parse into individual keywords
-  #   terms = query.downcase.split(/\s+/)
-  #   # replace "*" with "%" for wildcard searches,
-  #   # append '%', remove duplicate '%'s
-  #   terms = terms.map { |e|
-  #     (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-  #   }
-  #   # configure number of OR conditions for provision
-  #   # of interpolation arguments. Adjust this if you
-  #   # change the number of OR conditions.
-  #   num_or_conditions = 2
-  #   where(
-  #     terms.map {
-  #       or_clauses = [
-  #         "LOWER(cases.first_name) LIKE ?",
-  #         "LOWER(cases.name) LIKE ?"
-  #         # "LOWER(case.email) LIKE ?"
-  #       ].join(' OR ')
-  #       "(#{ or_clauses })"
-  #     }.join(' AND '),
-  #     *terms.map { |e| [e] * num_or_conditions }.flatten
-  #   )
-  # }
-  # scope :sorted_by, lambda { |sort_option|
-  #   # extract the sort direction from the param value.
-  #   direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
-  #   case sort_option.to_s
-  #   when /^created_at_/
-  #     order("students.created_at #{ direction }")
-  #   when /^name_/
-  #     order("LOWER(students.last_name) #{ direction }, LOWER(students.first_name) #{ direction }")
-  #   when /^country_name_/
-  #     order("LOWER(countries.name) #{ direction }").includes(:country)
-  #   else
-  #     raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
-  #   end
-  # }
  
   pg_search_scope :search, against: [:client_first_name, :client_name], :using => {
                 dmetaphone: {},
