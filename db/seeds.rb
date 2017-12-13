@@ -42,7 +42,17 @@ c = Case.new({
     deacon_id: 2,
     subject: "Paying the Rent",
     amount_requested: Faker::Commerce.price,
-    amount_approved: Faker::Commerce.price
+    amount_approved: Faker::Commerce.price,
+    payments_attributes: [
+        {
+        payment_type: 'rent',
+        payable_to: 'Mark Brown',
+        amount: Faker::Commerce.price,
+        # case_id: 
+        description: Faker::Lorem.sentence(1),
+        pay_by: 'Mail'
+        }
+    ]
 
     })
 

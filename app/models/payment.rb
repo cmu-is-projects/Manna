@@ -17,7 +17,7 @@ class Payment < ActiveRecord::Base
 
     
   def client_proper_name(caseObj) 
-    caseObj.client_name + ' ' + caseObj.client_first_name
+    caseObj.client_first_name + ' ' + caseObj.client_name
   end
     
 end
