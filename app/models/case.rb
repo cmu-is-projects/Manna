@@ -13,9 +13,9 @@ class Case < ActiveRecord::Base
   $STATUSES = %w[submitted approved rejected check_signed check_processed]
 
   has_many :votes
-  has_many :case_attachments
+  has_many :case_attachments, dependent: :delete_all
   has_many :attachments, through: :case_attachments
-  has_many :payments
+  has_many :payments, dependent: :delete_all
 
   validates_numericality_of :amount_requested, greater_than_or_equal_to: 0
   validates_numericality_of :amount_approved, greater_than_or_equal_to: 0, allow_blank: true
@@ -26,6 +26,7 @@ class Case < ActiveRecord::Base
 
   #scopes
   scope :chronological,       -> { order('date_submitted DESC') }
+  scope :chronological_reverse, -> { order('date_submitted ASC') }
   scope :cases_in_month,      -> (mon,yr){where('EXTRACT(MONTH FROM date_submitted) = ? AND EXTRACT(YEAR FROM date_submitted) = ?',mon, yr)}
   # scope :cases_in_month,      -> (mon,yr) { where("(date_submitted + 1.month).month = ? AND (date_submitted + 1.month).year = ?", mon, yr)} 
   scope :client_alphabetical, -> { order(:client_name)}
@@ -88,25 +89,6 @@ class Case < ActiveRecord::Base
                 trigram: {}
               }
   
-  # filterrific(
-  #   # default_filter_params: { sorted_by: 'chronological' },
-  #   available_filters: [
-  #     # :sorted_by,
-  #     :search_query,
-  #     :needs_vote
-  #   ]
-  # )
-
-  # def self.options_for_sorted_by
-  #   [
-  #     ['Name (a-z)', 'client_alphabetical'],
-  #     ['Registration date (newest first)', 'created_at_desc'],
-  #     ['Registration date (oldest first)', 'created_at_asc'],
-  #     ['Country (a-z)', 'country_name_asc']
-  #   ]
-  # end
-
-
 
   def self.not_voted_by_deacon(user)
     cases = Case.submitted - Case.submitted.voted_by_deacon(user.id)

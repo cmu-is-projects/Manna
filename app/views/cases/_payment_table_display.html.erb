@@ -7,6 +7,7 @@
       <th>Payable To</th>
       <th>Description</th>
       <th>Amount</th>
+      <th>Pay By </th>
       <!--         <th>Status</th> -->
     </tr>
   </thead>
@@ -25,6 +26,7 @@
       <td><%= payment.payable_to %></td>
       <td><%= payment.description %></td>
       <td><%= payment.amount %></td>
+      <td><%= payment.pay_by %></td>
       <!-- <td><%#= user.active ? "Active" : "Inactive" %></td> -->
     </tr>
     <% end %>

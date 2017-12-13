@@ -8,7 +8,8 @@
             <div class="col-md-12 example-title"> -->
         <%# yr = Time.now.year %>
         <% @years.each do |yr| %>
-            <% (1..12).each do |mon| %>
+            <%# (1..12).each do |mon| %>
+            <% (12).downto(0) do |mon| %>
                 <% @cases = Case.cases_in_month(mon, yr) %>
                 <% unless @cases.nil? || @cases.empty? %>
                     <%= render partial: "partials/timeline_month_title", locals: {c: @cases.first}%>

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row example-centered">
+    <table class="striped responsive-table centered">
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th> Client Name </th>
+          <th>Payment Type</th>
+          <th>Payable To</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Pay By </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @payments.each do |payment| %>
+        <tr>
+          <% @c = Case.find(payment.case_id) %>
+          <td><%= link_to @c.subject, case_path(@c) %> </td>
+          <td><%= payment.client_proper_name(@c) %> </td>
+          <td><%= payment.payment_type %></td>
+          <td><%= payment.payable_to %></td>
+          <td><%= payment.description %></td>
+          <td><%= payment.amount %></td>
+          <td><%= payment.pay_by %></td>
+
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+</div>
